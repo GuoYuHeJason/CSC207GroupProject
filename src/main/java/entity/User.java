@@ -11,6 +11,11 @@ public class User {
     private final String password;
     private List<Joke> favorites;
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public User(String name, String password, List<Joke> favorites) {
         this.name = name;
         this.password = password;
