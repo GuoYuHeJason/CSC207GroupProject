@@ -85,7 +85,7 @@ public class JokeAppView extends JPanel implements ActionListener, PropertyChang
     }
 
     /**
-     * Updates the UI fields based on the current state of JokeState.
+     * Updates the UI fields based on the current state of JokeState
      * @param state the current JokeState
      */
     private void updateFields(JokeState state) {
