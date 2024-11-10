@@ -44,7 +44,6 @@ public class JokeAppView extends JPanel implements ActionListener, PropertyChang
         this.add(searchJokeButton);
         this.add(favoriteJokeButton);
     }
-
     /**
      * Configures the actions for each button.
      */
