@@ -12,6 +12,10 @@ K1bbu7z : Funnist Use Case
 Mika: Search Use Case
 Alex: Fav_search Use Case
 Cheyl: add to fav Use Case, Fav joke display pannel
+Jason: New generate presenter, Joke view...
 
+Other(Jason)
+ViewManagerModel
+Login Signup logout: logic (create user from DB/File Data, write Data from curr User).
 
 
