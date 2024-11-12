@@ -9,8 +9,8 @@ public class UserFactory {
     /**
      * Creates a new User.
      *
-     * @param name     the name of the new user
-     * @param password the password of the new user
+     * @param name      the name of the new user
+     * @param password  the password of the new user
      * @param favorites the list of user's favourite joke(s)
      * @return the new user
      */
