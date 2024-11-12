@@ -9,82 +9,64 @@ import java.beans.PropertyChangeListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-import interface_adapter.search.SearchController;
-import interface_adapter.search.SearchState;
-import interface_adapter.search.SearchViewModel;
+import use_case.search.adapter.SearchController;
+import use_case.search.adapter.SearchViewModel;
+import view.helper_functions.LabelTextPanel;
 
 public class SearchView extends JPanel implements ActionListener, PropertyChangeListener {
-
+    private final String viewName = "Search";
     private final SearchViewModel searchViewModel;
 
     private final JLabel search = new JLabel("Enter keyword to find a joke:");
-    private final JTextArea keywordInputField = new JTextArea();
+    private final JTextField keywordInputField = new JTextField(15);
 
     private final JButton searchButton = new JButton("Search");
+    private final JButton cancelButton = new JButton("Cancel");
     private SearchController searchController;
 
     public SearchView(SearchViewModel searchViewModel) {
-
-        search.setAlignmentX(Component.LEFT_ALIGNMENT);
-        this.searchViewModel = noteViewModel;
+        this.searchViewModel = searchViewModel;
         this.searchViewModel.addPropertyChangeListener(this);
+
+        final JLabel title = new JLabel(SearchViewModel.TITLE_LABEL);
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        final LabelTextPanel searchBox = new LabelTextPanel(this.search, this.keywordInputField);
 
         final JPanel buttons = new JPanel();
         buttons.add(searchButton);
+        buttons.add(cancelButton);
 
         searchButton.addActionListener(
-                evt -> {
-                    if (evt.getSource().equals(saveButton)) {
-                        noteController.execute(noteInputField.getText());
-
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(searchButton)) {
+                            searchController.execute(keywordInputField.getText());
+                        }
                     }
                 }
         );
 
-        refreshButton.addActionListener(
-                evt -> {
-                    if (evt.getSource().equals(refreshButton)) {
-                        noteController.execute(null);
-
-                    }
-                }
-        );
+        cancelButton.addActionListener(this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.add(noteName);
-        this.add(noteInputField);
+        this.add(title);
+        this.add(searchBox);
         this.add(buttons);
     }
 
-    /**
-     * React to a button click that results in evt.
-     * @param evt the ActionEvent to react to
-     */
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Click " + evt.getActionCommand());
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        final NoteState state = (NoteState) evt.getNewValue();
-        setFields(state);
-        if (state.getError() != null) {
-            JOptionPane.showMessageDialog(this, state.getError(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
-    private void setFields(NoteState state) {
-        noteInputField.setText(state.getNote());
-    }
-
-    public void setNoteController(NoteController controller) {
-        this.noteController = controller;
     }
 }
 
