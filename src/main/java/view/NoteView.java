@@ -57,7 +57,7 @@ public class JokeAppView extends JPanel implements ActionListener, PropertyChang
             if (query != null && !query.trim().isEmpty()) {
                 jokeController.execute("search", query);
             }
-        })
+        });
         favoriteJokeButton.addActionListener(e -> jokeController.execute("Favourite", ""));
     }
 
