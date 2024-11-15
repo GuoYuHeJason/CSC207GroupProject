@@ -1,5 +1,6 @@
 package view.joke_view;
 
+import data_access.ExplanationDataAccessObject;
 import data_access.MockExplanationDataAccessObject;
 import use_case.explanation.*;
 import use_case.explanation.adapter.ExplanationController;
@@ -18,7 +19,7 @@ public class JokeFrameBuilder {
     // view doesn't change, so don't need ViewManager(cardPanel, cardLayout, viewManagerModel);
 
     //TODO change mock
-    private final ExplanationDataAccessInterface explanationDataAccessObject = new MockExplanationDataAccessObject();
+    private final ExplanationDataAccessInterface explanationDataAccessObject = new ExplanationDataAccessObject();
 
     public JokeFrameBuilder() {
     }
@@ -52,6 +53,8 @@ public class JokeFrameBuilder {
 
     public JFrame build() {
         final JFrame frame = new JFrame("Joke");
+
+        //TODO may need to change
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         frame.add(jokeView);

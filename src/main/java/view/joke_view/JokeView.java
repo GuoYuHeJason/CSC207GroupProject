@@ -46,30 +46,26 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
         buttons.add(addToFav);
 
         explain.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(explain)) {
-                            final JokeState currentState = jokeViewModel.getState();
+                evt -> {
+                    if (evt.getSource().equals(explain)) {
+                        final JokeState currentState = jokeViewModel.getState();
 
-                            explanationController.execute(
-                                    currentState.getJokeContent()
-                            );
-                        }
+                        explanationController.execute(
+                                currentState.getJokeContent()
+                        );
                     }
                 }
         );
 
         addToFav.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(addToFav)) {
-                            final JokeState currentState = jokeViewModel.getState();
-                            //can change depending on how addController is implemented
-                            addController.execute(
-                                    currentState.getJokeContent(),
-                                    currentState.getExplanation(),
-                                    null);
-                        }
+                evt -> {
+                    if (evt.getSource().equals(addToFav)) {
+                        final JokeState currentState = jokeViewModel.getState();
+                        //can change depending on how addController is implemented
+                        addController.execute(
+                                currentState.getJokeContent(),
+                                currentState.getExplanation(),
+                                null);
                     }
                 }
         );
