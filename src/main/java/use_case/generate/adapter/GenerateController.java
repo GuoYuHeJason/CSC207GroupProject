@@ -19,4 +19,5 @@ public class GenerateController {
     public void execute() {
         generateInputBoundary.executeGenerate();
     }
+    //may change to add user
 }

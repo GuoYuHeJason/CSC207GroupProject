@@ -1,7 +1,7 @@
 package view.joke_view;
 
 import use_case.add_to_fav.AddController;
-import use_case.explain.ExplanationController;
+import use_case.explanation.ExplanationController;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -67,8 +67,8 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
                             //can change depending on how addController is implemented
                             addController.execute(
                                     currentState.getJokeContent(),
-                                    currentState.getExplanation()
-                            );
+                                    currentState.getExplanation(),
+                                    null);
                         }
                     }
                 }
