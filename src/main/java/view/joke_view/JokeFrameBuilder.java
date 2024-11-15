@@ -1,11 +1,9 @@
 package view.joke_view;
 
-import data_access.ExplanationDataAccessObject;
 import data_access.MockExplanationDataAccessObject;
-import entity.JokeFactory;
-import entity.UserFactory;
 import use_case.explanation.*;
-import use_case.generate.adapter.DemoAppView;
+import use_case.explanation.adapter.ExplanationController;
+import use_case.explanation.adapter.ExplanationPresenter;
 
 import javax.swing.*;
 

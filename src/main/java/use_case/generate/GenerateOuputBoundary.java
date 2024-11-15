@@ -5,7 +5,7 @@ public interface GenerateOuputBoundary {
      * Prepares the success view for the Note related Use Cases.
      * @param jokeContent the output data
      */
-    void prepareSuccessView(String jokeContent);
+    void prepareSuccessView(GenerateOutputData generateOutputData);
 
     /**
      * Prepares the failure view.

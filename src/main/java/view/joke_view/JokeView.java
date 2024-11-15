@@ -1,7 +1,7 @@
 package view.joke_view;
 
 import use_case.add_to_fav.AddController;
-import use_case.explanation.ExplanationController;
+import use_case.explanation.adapter.ExplanationController;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

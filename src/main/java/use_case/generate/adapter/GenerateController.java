@@ -20,4 +20,5 @@ public class GenerateController {
         generateInputBoundary.executeGenerate();
     }
     //may change to add user
+    //controller is responsible for changing raw info from view states to inputData
 }

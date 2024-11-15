@@ -2,6 +2,7 @@ package use_case.generate.adapter;
 
 import entity.Joke;
 import use_case.generate.GenerateOuputBoundary;
+import use_case.generate.GenerateOutputData;
 import use_case.note.NoteOutputBoundary;
 import view.joke_view.JokeFrameBuilder;
 import view.joke_view.JokeViewModel;
@@ -20,13 +21,13 @@ public class GeneratePresenter implements GenerateOuputBoundary {
     /**
      * Prepares the success view for the Note related Use Cases.
      *
-     * @param jokeContent the output data
+     * @param generateOutputData the output data
      */
     @Override
-    public void prepareSuccessView(String jokeContent) {
+    public void prepareSuccessView(GenerateOutputData generateOutputData) {
         final JFrame frame = jokeFrameBuilder
                 .addJokeView()
-                .setJokeContent(jokeContent)
+                .setJokeContent(generateOutputData.getJokeContent())
                 .addExplanationUseCase()
                 .addAddToFavUseCase()
                 .build();
