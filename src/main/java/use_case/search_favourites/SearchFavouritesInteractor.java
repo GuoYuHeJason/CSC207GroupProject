@@ -20,7 +20,7 @@ public class SearchFavouritesInteractor implements SearchFavouritesInputBoundary
     @Override
     public void searchFavourites(String keyword) {
         try {
-            List<Joke> favourites = jokeDataAccessObject.getFavourites();
+            List<Joke> favourites = jokeDataAccessObject.getFavorites();
             List<Joke> matchingFavourites = favourites.stream()
                     .filter(joke -> joke.getText().toLowerCase().contains(keyword.toLowerCase()))
                     .collect(Collectors.toList());
