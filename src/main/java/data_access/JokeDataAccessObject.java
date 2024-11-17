@@ -6,14 +6,17 @@ import okhttp3.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 import use_case.generate.GenerateDataAccessInterface;
+import use_case.search.SearchDataAccessInterface;
 
 import java.io.IOException;
 
 
-public class JokeDataAccessObject implements GenerateDataAccessInterface {
+public class JokeDataAccessObject implements GenerateDataAccessInterface,
+        SearchDataAccessInterface {
 
     private static final String MESSAGE = "message";
     private static final String API_URL = "https://v2.jokeapi.dev/joke/Any";
+    private static final String API_SEARCH_URL = "https://v2.jokeapi.dev/joke/Any?contains=";
 
     @Override
     public String getJokeContent() {
@@ -46,6 +49,36 @@ public class JokeDataAccessObject implements GenerateDataAccessInterface {
             if (responseBody.getBoolean("error")) {
                 throw new RuntimeException(responseBody.getString(MESSAGE));
             } else {
+                switch (responseBody.getString("type")) {
+                    case "single":
+                        return responseBody.getString("joke");
+                    case "twopart":
+                        return responseBody.getString("setup") + responseBody.getString("delivery");
+                    default:
+                        return "something funny";
+                }
+            }
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
+    }
+
+    @Override
+    public String searchJoke(String keyword) {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(String.format(API_SEARCH_URL + keyword))
+                .build();
+        try {
+            final Response response = client.newCall(request).execute();
+            final JSONObject responseBody = new JSONObject(response.body().string());
+
+            if (responseBody.getBoolean("error")) {
+                throw new RuntimeException(responseBody.getString(MESSAGE));
+            }
+            else {
                 switch (responseBody.getString("type")) {
                     case "single":
                         return responseBody.getString("joke");

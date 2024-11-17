@@ -3,9 +3,9 @@ package use_case.search;
 public interface SearchOutputBoundary {
     /**
      * Prepares the success view.
-     * @param joke the joke we want to present.
+     * @param jokeContent the joke we want to present.
      */
-    void prepareSuccessView(String joke);
+    void prepareSuccessView(SearchOutputData jokeContent);
 
     /**
      * Prepares the failure view.
