@@ -1,6 +1,7 @@
 package use_case.search.adapter;
 
-import view.SearchView;
+import view.search_view.SearchView;
+import view.search_view.SearchViewModel;
 
 import javax.swing.*;
 

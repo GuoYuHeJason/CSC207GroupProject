@@ -14,7 +14,8 @@ public class SearchInteractor implements SearchInputBoundary {
     public void executeSearch(String keyword) {
         try {
             final String jokeContent = searchDataAccessObject.searchJoke(keyword);
-            searchPresenter.prepareSuccessView(jokeContent);
+            final SearchOutputData searchOutputData = new SearchOutputData(jokeContent);
+            searchPresenter.prepareSuccessView(searchOutputData);
         }
         catch (RuntimeException ex) {
             final String message = "failed to find a joke";
