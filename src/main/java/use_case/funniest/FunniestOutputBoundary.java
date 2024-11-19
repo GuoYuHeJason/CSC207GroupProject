@@ -1,11 +1,11 @@
-package use_case.favourite;
+package use_case.funniest;
 
-public interface FavouriteOutputBoundary {
+public interface FunniestOutputBoundary {
     /**
      * Prepares the success view for the Note related Use Cases.
-     * @param favouriteOutputData the output data
+     * @param funniestOutputData the output data
      */
-    void prepareSuccessView(FavouriteOutputData favouriteOutputData);
+    void prepareSuccessView(FunniestOutputData funniestOutputData);
 
     /**
      * Prepares the failure view.
