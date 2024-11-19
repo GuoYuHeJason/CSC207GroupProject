@@ -92,15 +92,15 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
         return viewName;
     }
 
+    public void setFavouriteController(FavouriteController favouriteController) {
+        this.favouriteController = favouriteController;
+    }
+
     public void setGenerateController(GenerateController generateController) {
         this.generateController = generateController;
     }
 
     public void setSearchController(SearchController searchController) {
         this.searchController = searchController;
-    }
-
-    public void setFavouriteController(FavouriteController favouriteController) {
-        this.favouriteController = favouriteController;
     }
 }
