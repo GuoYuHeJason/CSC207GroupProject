@@ -22,7 +22,10 @@ public class GenerateInteractor implements GenerateInputBoundary{
     public void executeGenerate() {
         try {
             final String jokeContent = generateDataAccessInterface.getJokeContent();
-            generateOuputBoundary.prepareSuccessView(jokeContent);
+            // interactor gets input data and outputs output data
+            final GenerateOutputData generateOutputData = new GenerateOutputData(jokeContent);
+
+            generateOuputBoundary.prepareSuccessView(generateOutputData);
         }
         catch (RuntimeException ex) {
             generateOuputBoundary.prepareFailView(ex.getMessage());

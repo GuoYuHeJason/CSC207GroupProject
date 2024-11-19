@@ -1,11 +1,11 @@
-package use_case.generate;
+package use_case.explanation;
 
-public interface GenerateOuputBoundary {
+public interface ExplanationOutputBoundary {
     /**
      * Prepares the success view for the Note related Use Cases.
-     * @param jokeContent the output data
+     * @param explanationOutputData the output data
      */
-    void prepareSuccessView(GenerateOutputData generateOutputData);
+    void prepareSuccessView(ExplanationOutputData explanationOutputData);
 
     /**
      * Prepares the failure view.

@@ -1,6 +1,6 @@
 package data_access;
 
-import use_case.explain.ExplanationDataAccessInterface;
+import use_case.explanation.ExplanationDataAccessInterface;
 
 public class MockExplanationDataAccessObject implements ExplanationDataAccessInterface {
 
