@@ -1,18 +1,12 @@
-package view;
+package view.favourite_view;
 
-import use_case.favourite.adapter.FavouriteViewModel;
 import view.helper_functions.LabelTextPanel;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
 
 import use_case.favourite.adapter.FavouriteController;
-import use_case.favourite.adapter.FavouriteState;
 
 public class FavouriteView extends JPanel {
 
@@ -32,7 +26,7 @@ public class FavouriteView extends JPanel {
     public FavouriteView(FavouriteViewModel favouriteViewModel, FavouriteController controller) {
         this.favouriteController = controller;
         this.favouriteViewModel = favouriteViewModel;
-//        this.favouriteViewModel.addPropertyChangeListener(this);
+        this.favouriteViewModel.addPropertyChangeListener(this);
 
         final JLabel title = new JLabel(FavouriteViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -50,6 +44,12 @@ public class FavouriteView extends JPanel {
         this.add(title);
         this.add(search);
         this.add(buttons);
+
+        final JPanel jokeListPanel = new JPanel();
+
+        final JFrame mainPanel = new JFrame(viewName);
+        mainPanel.add(buttons, BorderLayout.NORTH);
+        mainPanel.add(jokeListPanel, BorderLayout.SOUTH);
 
 //        funniestButton.addActionListener(
 //                evt -> {

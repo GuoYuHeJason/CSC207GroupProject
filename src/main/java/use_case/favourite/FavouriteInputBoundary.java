@@ -12,4 +12,6 @@ public interface FavouriteInputBoundary {
      * Executes the switch to login view use case.
      */
     void switchToFavouriteView();
+
+    void executeFunniest();
 }

@@ -1,4 +1,4 @@
-package use_case.favourite.adapter;
+package view.favourite_view;
 
 import view.ViewModel;
 
@@ -11,7 +11,7 @@ public class FavouriteViewModel extends ViewModel<FavouriteState> {
     public static final String FUNNIEST_BUTTOM_LABEL = "funniest";
     public static final String CANCEL_BUTTOM_LABEL = "cancel";
 
-    public FavouriteViewModel(){
+    public FavouriteViewModel() {
         super("Favourite");
         setState(new FavouriteState());
     }
