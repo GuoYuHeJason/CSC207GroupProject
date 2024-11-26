@@ -1,6 +1,6 @@
-package view.joke_view;
+package view.main;
 
-public class JokeState {
+public class MainState {
     // info that can change
     private String jokeContent = "";
     private String explanation = "";

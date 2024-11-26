@@ -1,4 +1,4 @@
-package view;
+package view.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,30 +12,33 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import interface_adapter.joke.JokeController;
-import interface_adapter.joke.JokeViewModel;
+import interface_adapter.joke.MainViewModel;
 import use_case.favourite.adapter.FavouriteController;
 import use_case.generate.adapter.GenerateController;
 import use_case.search.adapter.SearchController;
+
+import static view.main.MainViewModel.*;
 
 /**
  * The Main View for interacting with the Joke Application.
  */
 public class MainView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private final String viewName = "joke view";
-    private final JokeViewModel jokeViewModel;
+    private final String viewName = TITLE_LABEL;
+    private final MainViewModel jokeViewModel;
 
     private final JLabel userIdLabel = new JLabel("User ID: ");
-    private final JButton generateJokeButton = new JButton("Generate Joke");
-    private final JButton searchJokeButton = new JButton("Search Joke");
-    private final JButton favouritePageButton = new JButton("Go to Favourites");
-    private final JButton logoutButton = new JButton("Log out");
+    private final JButton generateJokeButton = new JButton(GENERATE_BUTTON_LABEL);
+    private final JButton searchJokeButton = new JButton(SEARCH_BUTTON_LABEL);
+    private final JButton favouritePageButton = new JButton(FAVOURITE_BUTTON_LABEL);
+    private final JButton logoutButton = new JButton(LOGOUT_BUTTON_LABEL);
+
     private JokeController jokeController;
     private GenerateController generateController;
     private FavouriteController favouriteController;
     private SearchController searchController;
 
-    public MainView(JokeViewModel jokeViewModel) {
+    public MainView(MainViewModel jokeViewModel) {
         this.jokeViewModel = jokeViewModel;
 
         this.jokeViewModel.addPropertyChangeListener(this);
@@ -57,14 +60,18 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
         generateJokeButton.addActionListener(event -> jokeController.execute("Generate", ""));
 
         searchJokeButton.addActionListener(event -> {
-            final String query = JOptionPane.showInputDialog(this, "Search Joke:");
+            final String query = JOptionPane.showInputDialog(this, SEARCH_BUTTON_LABEL + ":");
             if (query != null && !query.trim().isEmpty()) {
                 jokeController.execute("search", query);
             }
         });
+
         favouritePageButton.addActionListener(event -> {
+            // Navigate to favourites
         });
+
         logoutButton.addActionListener(event -> {
+            // Logout logic
         });
     }
 
@@ -83,7 +90,7 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if ("error".equals(evt.getPropertyName())) {
-            JOptionPane.showMessageDialog(this, evt.getNewValue().toString(), "Error",
+            JOptionPane.showMessageDialog(this, evt.getNewValue().toString(), ERROR_DIALOG_TITLE,
                     JOptionPane.ERROR_MESSAGE);
         }
     }
