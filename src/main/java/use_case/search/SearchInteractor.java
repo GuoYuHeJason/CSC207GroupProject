@@ -12,14 +12,14 @@ public class SearchInteractor implements SearchInputBoundary {
 
     @Override
     public void executeSearch(String keyword) {
-        try {
-            final String jokeContent = searchDataAccessObject.searchJoke(keyword);
-            final SearchOutputData searchOutputData = new SearchOutputData(jokeContent);
-            searchPresenter.prepareSuccessView(searchOutputData);
-        }
-        catch (RuntimeException ex) {
+        final String jokeContent = searchDataAccessObject.searchJoke(keyword);
+        final SearchOutputData searchOutputData = new SearchOutputData(jokeContent);
+        if (searchOutputData.getError()) {
             final String message = "failed to find a joke";
             searchPresenter.prepareFailureView(message);
+        }
+        else {
+            searchPresenter.prepareSuccessView(searchOutputData);
         }
     }
 }

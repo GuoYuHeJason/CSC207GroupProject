@@ -3,6 +3,7 @@ package use_case.signup.adapter;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
+import use_case.search.adapter.SearchViewModel;
 import use_case.signup.SignupOutputBoundary;
 import use_case.signup.SignupOutputData;
 
@@ -13,14 +14,17 @@ public class SignupPresenter implements SignupOutputBoundary {
 
     private final SignupViewModel signupViewModel;
     private final LoginViewModel loginViewModel;
+    private final SearchViewModel searchViewModel;
     private final ViewManagerModel viewManagerModel;
 
     public SignupPresenter(ViewManagerModel viewManagerModel,
                            SignupViewModel signupViewModel,
-                           LoginViewModel loginViewModel) {
+                           LoginViewModel loginViewModel,
+                           SearchViewModel searchViewModel) {
         this.viewManagerModel = viewManagerModel;
         this.signupViewModel = signupViewModel;
         this.loginViewModel = loginViewModel;
+        this.searchViewModel = searchViewModel;
     }
 
     @Override
@@ -45,6 +49,11 @@ public class SignupPresenter implements SignupOutputBoundary {
     @Override
     public void switchToLoginView() {
         viewManagerModel.setState(loginViewModel.getViewName());
+        viewManagerModel.firePropertyChanged();
+    }
+
+    public void switchToSearchView() {
+        viewManagerModel.setState(searchViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
 }

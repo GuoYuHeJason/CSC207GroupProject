@@ -74,9 +74,8 @@ public class JokeDataAccessObject implements GenerateDataAccessInterface,
         try {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
-
             if (responseBody.getBoolean("error")) {
-                throw new RuntimeException(responseBody.getString(MESSAGE));
+                return responseBody.getString(MESSAGE);
             }
             else {
                 switch (responseBody.getString("type")) {

@@ -2,27 +2,41 @@ package use_case.search.adapter;
 
 import use_case.search.SearchOutputBoundary;
 import use_case.search.SearchOutputData;
-import view.search_view.SearchState;
-import view.search_view.SearchViewModel;
+import view.joke_view.JokeFrameBuilder;
+
+import javax.swing.*;
 
 public class SearchPresenter implements SearchOutputBoundary {
 
-    private final SearchViewModel searchViewModel;
+    private final JokeFrameBuilder jokeFrameBuilder;
 
-    public SearchPresenter(SearchViewModel searchViewModel) {
-        this.searchViewModel = searchViewModel;
+    public SearchPresenter(JokeFrameBuilder jokeFrameBuilder) {
+        this.jokeFrameBuilder = jokeFrameBuilder;
     }
 
     @Override
     public void prepareSuccessView(SearchOutputData searchOutputData) {
-        final SearchState searchState = searchViewModel.getState();
-        searchState.setExplanation(searchOutputData.getJokeContent());
-        searchViewModel.setState(searchState);
-        searchViewModel.firePropertyChanged();
+        final JFrame frame = jokeFrameBuilder
+                .addJokeView()
+                .setJokeContent(searchOutputData.getJokeContent())
+                .addExplanationUseCase()
+                .addAddToFavUseCase()
+                .build();
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
     @Override
     public void prepareFailureView(String errormessage) {
+        final JFrame frame = jokeFrameBuilder
+                .addJokeView()
+                .setJokeContent(errormessage)
+                .addExplanationUseCase()
+                .addAddToFavUseCase()
+                .build();
 
+        frame.pack();
+        frame.setVisible(true);
     }
 }
