@@ -14,11 +14,11 @@ public class UserFactory {
      * @param favorites the list of user's favourite joke(s)
      * @return the new user
      */
-    User create(String name, String password, List<Joke> favorites) {
+    public User create(String name, String password, List<Joke> favorites) {
         return new User(name, password, favorites);
     }
 
-    User create(String name, String password) {
+    public User create(String name, String password) {
         return new User(name, password);
     }
 

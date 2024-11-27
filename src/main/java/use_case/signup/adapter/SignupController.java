@@ -33,8 +33,7 @@ public class SignupController {
     public void switchToLoginView() {
         userSignupUseCaseInteractor.switchToLoginView();
     }
-    // TODO Task: add a switchtoSearchView for controller, presenter
-    // TODO Task: add a file data access object for users.
+
     public void switchtoSearchView() {
         userSignupUseCaseInteractor.switchToSearchView();
     }
