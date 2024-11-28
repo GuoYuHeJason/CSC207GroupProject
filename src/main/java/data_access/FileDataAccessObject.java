@@ -13,17 +13,20 @@ import entity.Joke;
 import entity.JokeFactory;
 import entity.User;
 import entity.UserFactory;
+import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 
 /**
  * DAO for user data implemented using a File to persist the data.
  */
-public class FileDataAccessObject implements SignupUserDataAccessInterface {
+public class FileDataAccessObject implements SignupUserDataAccessInterface,
+        LogoutUserDataAccessInterface {
 
     private File jsonFile;
     private List<User> users = new ArrayList<>();
     private UserFactory userFactory = new UserFactory();
     private JokeFactory jokeFactory = new JokeFactory();
+    private String currentUserName;
 
     /**
      * Constructs a Data Access Object populated using data from the specified resources file.
@@ -88,11 +91,6 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface {
     }
 
     @Override
-    public boolean existsByName(String username) {
-        return false;
-    }
-
-    @Override
     public void save(User user) {
         users.add(user);
         this.save();
@@ -106,5 +104,20 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean existsByName(String username) {
+        return false;
+    }
+
+    @Override
+    public String getCurrentUsername() {
+        return this.currentUserName;
+    }
+
+    @Override
+    public void setCurrentUsername(String username) {
+        this.currentUserName = username;
     }
 }

@@ -11,6 +11,7 @@ public class LogoutInputData {
         this.username = username;
     }
 
-    String getUsername() {return username; }
+    String getUsername() {
+        return username; }
 
 }
