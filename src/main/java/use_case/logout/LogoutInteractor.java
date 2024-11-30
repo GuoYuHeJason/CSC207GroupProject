@@ -1,22 +1,27 @@
 package use_case.logout;
 
+import data_access.FileDataAccessObject;
+import entity.User;
+
 /**
  * The Logout Interactor.
  */
 public class LogoutInteractor implements LogoutInputBoundary {
-    private LogoutUserDataAccessInterface userDataAccessObject;
+    private FileDataAccessObject fileDataAccessObject;
     private LogoutOutputBoundary logoutPresenter;
 
-    public LogoutInteractor(LogoutUserDataAccessInterface userDataAccessInterface,
+    public LogoutInteractor(FileDataAccessObject userDataAccessInterface,
                             LogoutOutputBoundary logoutOutputBoundary) {
-        this.userDataAccessObject = userDataAccessInterface;
+        this.fileDataAccessObject = userDataAccessInterface;
         this.logoutPresenter = logoutOutputBoundary;
     }
 
     @Override
     public void execute(LogoutInputData logoutInputData) {
         final String username = logoutInputData.getUsername();
-        userDataAccessObject.setCurrentUsername(null);
+        final User currentUser = fileDataAccessObject.get(username);
+        fileDataAccessObject.save(currentUser);
+        fileDataAccessObject.setCurrentUsername(null);
         final LogoutOutputData logoutOutputData = new LogoutOutputData(username, false);
         logoutPresenter.prepareSuccessView(logoutOutputData);
     }

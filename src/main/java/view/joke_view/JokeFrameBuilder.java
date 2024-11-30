@@ -19,7 +19,7 @@ public class JokeFrameBuilder {
     // view doesn't change, so don't need ViewManager(cardPanel, cardLayout, viewManagerModel);
 
     //TODO change mock
-    private final ExplanationDataAccessInterface explanationDataAccessObject = new ExplanationDataAccessObject();
+    private final ExplanationDataAccessInterface explanationDataAccessObject = new MockExplanationDataAccessObject();
 
     public JokeFrameBuilder() {
     }

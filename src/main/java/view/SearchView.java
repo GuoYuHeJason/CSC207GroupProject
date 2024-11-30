@@ -1,4 +1,4 @@
-package view.search_view;
+package view;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import use_case.search.SearchInteractor;
 import use_case.search.adapter.SearchController;
 import view.helper_functions.LabelTextPanel;
+import use_case.search.adapter.SearchViewModel;
 
 public class SearchView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -70,6 +70,10 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
+    }
+
+    public void setSearchController(SearchController searchController) {
+        this.searchController = searchController;
     }
 }
 

@@ -1,4 +1,4 @@
-package view.search_view;
+package use_case.search.adapter;
 
 import view.ViewModel;
 

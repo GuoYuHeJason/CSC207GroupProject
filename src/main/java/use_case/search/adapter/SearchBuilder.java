@@ -1,7 +1,9 @@
 package use_case.search.adapter;
 
-import view.search_view.SearchView;
-import view.search_view.SearchViewModel;
+import data_access.JokeDataAccessObject;
+import use_case.search.SearchInteractor;
+import view.joke_view.JokeFrameBuilder;
+import view.SearchView;
 
 import javax.swing.*;
 
@@ -13,11 +15,18 @@ public class SearchBuilder {
 
         final JFrame frame = new JFrame();
         final SearchViewModel viewModel = new SearchViewModel();
+        final SearchView searchView = new SearchView(viewModel);
+        final JokeFrameBuilder frameBuilder = new JokeFrameBuilder();
+        final JokeDataAccessObject jokeDataAccessObject = new JokeDataAccessObject();
+        final SearchPresenter searchPresenter = new SearchPresenter(frameBuilder);
+        final SearchInteractor searchInteractor = new SearchInteractor(jokeDataAccessObject, searchPresenter);
+        final SearchController searchController = new SearchController(searchInteractor);
+        searchView.setSearchController(searchController);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setTitle("Search");
         frame.setSize(WIDTH, HEIGHT);
 
-        frame.add(new SearchView(viewModel));
+        frame.add(searchView);
 
         return frame;
 
