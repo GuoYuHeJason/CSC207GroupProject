@@ -5,18 +5,18 @@ package use_case.add_to_fav;
  * for the Add to Favorites use case.
  */
 public class AddToFavInputData {
-    private final String username;
-    private final String jokeId;
+    private final String jokeContent;
+    private final String explanation;
 
     /**
      * Constructs an AddToFavInputData with the specified username and joke ID.
      *
-     * @param username the username of the user
-     * @param jokeId   the ID of the joke to add to favorites
+     * @param jokeContent the username of the user
+     * @param explanation   the ID of the joke to add to favorites
      */
-    public AddToFavInputData(String username, String jokeId) {
-        this.username = username;
-        this.jokeId = jokeId;
+    public AddToFavInputData(String jokeContent, String explanation) {
+        this.jokeContent = jokeContent;
+        this.explanation = explanation;
     }
 
     /**
@@ -24,8 +24,8 @@ public class AddToFavInputData {
      *
      * @return the username of the user
      */
-    public String getUsername() {
-        return username;
+    public String getJokeContent() {
+        return jokeContent;
     }
 
     /**
@@ -33,7 +33,7 @@ public class AddToFavInputData {
      *
      * @return the joke ID
      */
-    public String getJokeId() {
-        return jokeId;
+    public String getExplanation() {
+        return explanation;
     }
 }

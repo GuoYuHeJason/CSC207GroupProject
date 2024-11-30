@@ -11,5 +11,5 @@ public interface AddToFavInputBoundary {
      * @param inputData the input data containing the username and joke ID
      * @return a response model indicating the result of the operation
      */
-    AddToFavOutputData addToFavorites(AddToFavInputData inputData);
+    void executeAddToFav(AddToFavInputData inputData);
 }

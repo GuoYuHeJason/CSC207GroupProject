@@ -79,10 +79,10 @@ Contributing to the Project:
 3. Create a New Branch:
    4. "git checkout -b feature/new-feature"
 4. Make Your Changes:
-   5. add or change features 
+   5. Add or change features 
 5. Submit a Pull Request:
    6. Commit and push your changes to your fork and open a pull request in the main repository.
-   7. provide a description of your changes explaining why they are valuable. 
+   7. Provide a description of your changes explaining why they are valuable. 
 
 We appreciate you for engaging with our Joke Machine!
 
