@@ -9,15 +9,11 @@
 ## Table of Contents
 
 * Software Specification
-* Features 
-* User Stories 
-* Entities 
-* Proposed API 
-* Setup and Installation 
-* Usage 
-* Contributing 
+* Features
+* Installation Instructions
+* Usage
 * License 
-* Contact
+* Feedback and Contributions
 
 ## Software Specification
 Joke Machine is a joke generation and explanation platform that allows users to generate, search for, save, and understand jokes. Users can generate or search up jokes, ask for explanations, and sort their list of favorite jokes based on rating of the jokes. Joke Machine integrates with external APIs for joke generation and explanation to provide rich and diverse humor content.
@@ -31,34 +27,32 @@ Joke Machine is a joke generation and explanation platform that allows users to 
     Search for jokes within saved list of jokes
     Filter jokes by rating to find the "funniest" jokes.
 
-## User Stories
-* Bob generates a joke. He then keeps generating new jokes with different specifications until he     is tired.
-* Bob was told a joke but he doesn't understand it. He runs the joke explanation program and the      program explains to him what is funny about the joke.
-* Bob finds some jokes funny and saves them as favorite. He later wants to revisit the jokes that     were favorited, so he revisits his list of saved jokes.
-* Bob remembers a joke vaguely, he only remembers that it was about 911. He searches “911”  and a     few different jokes pop up.
-* Bob wants to find a specific saved joke, he doesn’t remember what the joke said but he remembers    the explanation. He then goes into his list of saved jokes and searches by keywords in the          explanation.
-* Bob wants to find some really funny jokes. He presses the “Funniest” button in the saved view,      then the program returns the joke with the highest score.
-
-## Entities
-### User
-    Attributes:
-      name: User's name for login.
-      password: User’s password.
-      favorite: A list of saved jokes marked as favorites.
-### Joke
-    Attributes:
-      content: The joke text.
-      explanation: The joke's explanation or humorous insight.
-      score: Humor rating to indicate how funny the joke is.
-    
-## Proposed API
-* Google Gemini: Used for natural language understanding and generation. Assists in explaining        user-provided jokes.
-* JokeAPI: Used for joke retrieval and generation, allowing for a diverse and randomized joke         collection.
-
 ## Setup and Installation
-* Clone the Repository
-* Install Dependencies:
-* Run the Application:
+* Before setting up the project, make sure you have the correct software installed。
+  1. Java Development Kit (JDK) version 11 or higher: 
+     2. https://www.oracle.com/java/technologies/javase-downloads.html 
+  2. IntelliJ IDEA Community or Ultimate Edition: 
+     3. https://www.jetbrains.com/idea/download/
+  
+
+* Once you have the software setup: 
+  1. Clone the repository: 
+     2. "https://github.com/GuoYuHeJason/CSC207GroupProject.git"
+     
+  2. Open the Project in IntelliJ:
+     3. Launch IntelliJ IDEA. 
+     4. Go to file and click New --> Project From Version Control.
+     5. Paste the clone and open project.  
+     
+  5. Install Dependencies:
+     6. Ensure that your project dependencies are configured in a build.gradle or pom.xml file.
+     7. If using Maven, IntelliJ will automatically import dependencies defined in pom.xml.
+     If using Gradle, open the build.gradle file, and IntelliJ will synchronize the dependencies.
+     
+  6. Run the Application:
+     6. Locate the Main class (or equivalent entry point) in your project.
+     7. Right-click on the file and select Run 'Main'.
+
 
 ## Usage
 ### Generating Jokes
@@ -72,3 +66,25 @@ Joke Machine is a joke generation and explanation platform that allows users to 
 ### Searching and Filtering
 * Keyword Search: Enter a keyword (e.g., "911") to find jokes related to that theme.
 * Funniest Jokes: Use the "Funniest" filter to sort saved jokes by their humor rating.
+
+## License 
+This project is released under the Creative Commons CC0 1.0 Universal (CC0) Public Domain Dedication. See LICENSE for details.
+
+## Feedback and Contributions
+Contributing to the Project:
+1. Fork the Repository:
+   * Click the "Fork" button on the top right of the repository page to create a copy of the project under your GitHub account.
+2. Clone the Repository: 
+   * "git clone https://github.com/your-username/joke-machine.git"
+3. Create a New Branch:
+   4. "git checkout -b feature/new-feature"
+4. Make Your Changes:
+   5. add or change features 
+5. Submit a Pull Request:
+   6. Commit and push your changes to your fork and open a pull request in the main repository.
+   7. provide a description of your changes explaining why they are valuable. 
+
+We appreciate you for engaging with our Joke Machine!
+
+
+   
