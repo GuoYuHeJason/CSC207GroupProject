@@ -44,6 +44,12 @@ public class JokeFrameBuilder {
         return this;
     }
 
+    public JokeFrameBuilder setExplanation(String explanation) {
+        jokeViewModel.getState().setExplanation(explanation);
+        jokeViewModel.firePropertyChanged();
+        return this;
+    }
+
     public JokeFrameBuilder addExplanationUseCase() {
         final ExplanationOutputBoundary explanationOutputBoundary = new ExplanationPresenter(jokeViewModel);
         final ExplanationInputBoundary explanationInteractor = new ExplanationInteractor(
