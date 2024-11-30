@@ -1,21 +1,20 @@
 package use_case.generate.adapter;
 
-import entity.Joke;
+import data_access.FileDataAccessObject;
 import use_case.generate.GenerateOuputBoundary;
 import use_case.generate.GenerateOutputData;
-import use_case.note.NoteOutputBoundary;
 import view.joke_view.JokeFrameBuilder;
-import view.joke_view.JokeViewModel;
-
-import javax.swing.*;
+import visitor.GenerateVisitor;
+import visitor.JokeVisitor;
+import visitor.Visitor;
 
 public class GeneratePresenter implements GenerateOuputBoundary {
     // not a typical presenter, more similar to main
 
-    private final JokeFrameBuilder jokeFrameBuilder;
+    private final FileDataAccessObject fileDataAccessObject;
 
-    public GeneratePresenter(JokeFrameBuilder jokeFrameBuilder) {
-        this.jokeFrameBuilder = jokeFrameBuilder;
+    public GeneratePresenter(FileDataAccessObject fileDataAccessObject) {
+        this.fileDataAccessObject = fileDataAccessObject;
     }
 
     /**
@@ -25,15 +24,8 @@ public class GeneratePresenter implements GenerateOuputBoundary {
      */
     @Override
     public void prepareSuccessView(GenerateOutputData generateOutputData) {
-        final JFrame frame = jokeFrameBuilder
-                .addJokeView()
-                .setJokeContent(generateOutputData.getJokeContent())
-                .addExplanationUseCase()
-                .addAddToFavUseCase()
-                .build();
-
-        frame.pack();
-        frame.setVisible(true);
+        final JokeVisitor visitor = new Visitor(fileDataAccessObject);
+        visitor.visit(generateOutputData);
     }
 
     /**
@@ -41,7 +33,6 @@ public class GeneratePresenter implements GenerateOuputBoundary {
      *
      * @param errorMessage the explanation of the failure
      */
-    //TODO implement
     @Override
     public void prepareFailView(String errorMessage) {
 //        jokeViewModel.getState().setError(errorMessage);
