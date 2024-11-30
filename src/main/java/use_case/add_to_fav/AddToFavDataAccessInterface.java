@@ -1,3 +1,4 @@
+
 package use_case.add_to_fav;
 
 import entity.Joke;
@@ -14,20 +15,14 @@ public interface AddToFavDataAccessInterface {
      * @param username the username of the user
      * @return the User object, or null if not found
      */
-    User getUser(String username);
+    User get(String username);
 
-    /**
-     * Retrieves a joke by ID.
-     *
-     * @param jokeId the ID of the joke
-     * @return the Joke object, or null if not found
-     */
-    Joke getJoke(String jokeId);
-
+    String getCurrentUsername();
     /**
      * Saves the updated user to the data storage.
      *
      * @param user the User object to save
      */
+
     void saveUser(User user);
 }

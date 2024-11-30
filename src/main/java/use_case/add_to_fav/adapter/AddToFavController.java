@@ -1,9 +1,6 @@
 package use_case.add_to_fav.adapter;
 
-import use_case.add_to_fav.AddToFavInputBoundary;
-import use_case.add_to_fav.AddToFavInputData;
-import use_case.add_to_fav.AddToFavOutputData;
-import use_case.add_to_fav.AddToFavResponseModel;
+import use_case.add_to_fav.*;
 
 /**
  * The AddToFavController class handles user requests for adding a joke to their favorites.
@@ -25,20 +22,12 @@ public class AddToFavController {
     /**
      * Adds a joke to the user's list of favorites.
      *
-     * @param username the username of the user
-     * @param jokeId   the ID of the joke to add to favorites
+     * @param jokeContent the username of the user
+     * @param explanation   the ID of the joke to add to favorites
      * @return a response model containing the result of the operation
      */
-    public AddToFavResponseModel addToFavorites(String username, String jokeId) {
-        // Create the input data object for the interactor
-        final AddToFavInputData inputData = new AddToFavInputData(username, jokeId);
-
-        // Pass the input data to the interactor
-        final AddToFavOutputData outputData = interactor.addToFavorites(inputData);
-
-        // Return the formatted response
-        return new AddToFavResponseModel(outputData.getMessage());
+    public void execute(String jokeContent, String explanation) {
+        final AddToFavInputData inputData = new AddToFavInputData(jokeContent, explanation);
+        interactor.executeAddToFav(inputData);
     }
 }
-
-
