@@ -1,15 +1,13 @@
 package use_case.funniest;
 
-import entity.Joke;
-
 public class FunniestOutputData {
-    private final Joke joke;
+    private final String jokeContent;
 
-    public FunniestOutputData(Joke joke) {
-        this.joke = joke;
+    public FunniestOutputData(String jokeContent) {
+        this.jokeContent = jokeContent;
     }
 
-    Joke getJoke() {
-        return joke;
+    String getJokeContent() {
+        return jokeContent;
     }
 }

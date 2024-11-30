@@ -13,6 +13,7 @@ import entity.Joke;
 import entity.JokeFactory;
 import entity.User;
 import entity.UserFactory;
+import use_case.favourite.FavouriteUserDataAccessInterface;
 import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 
@@ -20,7 +21,7 @@ import use_case.signup.SignupUserDataAccessInterface;
  * DAO for user data implemented using a File to persist the data.
  */
 public class FileDataAccessObject implements SignupUserDataAccessInterface,
-        LogoutUserDataAccessInterface {
+        LogoutUserDataAccessInterface, FavouriteUserDataAccessInterface {
 
     private File jsonFile;
     private List<User> users = new ArrayList<>();
@@ -119,5 +120,10 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
     @Override
     public void setCurrentUsername(String username) {
         this.currentUserName = username;
+    }
+
+    @Override
+    public List<Joke> getUsername() {
+        return List.of();
     }
 }

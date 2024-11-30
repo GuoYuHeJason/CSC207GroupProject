@@ -1,31 +1,38 @@
 package view.favourite_view;
 
+import entity.Joke;
+import use_case.favourite.FavouriteInteractor;
 import view.helper_functions.LabelTextPanel;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.List;
 
 import javax.swing.*;
 
 import use_case.favourite.adapter.FavouriteController;
+import visitor.Visitor;
 
-public class FavouriteView extends JPanel {
+public class FavouriteView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private final FavouriteController favouriteController;
     private final FavouriteViewModel favouriteViewModel;
 
-    private final String viewName = "Favourite";
+    private final String viewName;
     private FavouriteView favouriteView;
 
-    private final JTextArea keywordInputField = new JTextArea();
+    private FavouriteController favouriteController;
 
     private final JTextField searchBox = new JTextField(15);
     private final JButton searchButton;
     private final JButton funniestButton;
     private final JButton cancelButton;
 
-    public FavouriteView(FavouriteViewModel favouriteViewModel, FavouriteController controller) {
-        this.favouriteController = controller;
+    public FavouriteView(FavouriteViewModel favouriteViewModel) {
         this.favouriteViewModel = favouriteViewModel;
+        this.viewName = favouriteViewModel.getViewName();
         this.favouriteViewModel.addPropertyChangeListener(this);
 
         final JLabel title = new JLabel(FavouriteViewModel.TITLE_LABEL);
@@ -40,36 +47,39 @@ public class FavouriteView extends JPanel {
         buttons.add(funniestButton);
         cancelButton = new JButton(FavouriteViewModel.CANCEL_BUTTOM_LABEL);
         buttons.add(cancelButton);
-
-        this.add(title);
-        this.add(search);
-        this.add(buttons);
+        buttons.add(search);
 
         final JPanel jokeListPanel = new JPanel();
+        List<Joke> fav = favouriteViewModel.getState().getFavourites();
+        for (int i = 0; i < fav.size(); i++) {
+            String content = fav.get(i).getContent();
+            jokeListPanel.add(new JLabel(content));
+        }
 
-        final JFrame mainPanel = new JFrame(viewName);
-        mainPanel.add(buttons, BorderLayout.NORTH);
-        mainPanel.add(jokeListPanel, BorderLayout.SOUTH);
+        final JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
-//        funniestButton.addActionListener(
-//                evt -> {
-//                    if (evt.getSource().equals(funniestButton)) {
-//                        favouriteController.execute(favouriteInputField.getText());
-//
-//                    }
-//                }
-//        );
-//
-//        refreshButton.addActionListener(
-//                evt -> {
-//                    if (evt.getSource().equals(refreshButton)) {
-//                        favouriteController.execute(null);
-//
-//                    }
-//                }
-//        );
-//    }
-//
+        mainPanel.setLeftComponent(buttons);
+        mainPanel.setRightComponent(jokeListPanel);
+
+        this.add(title);
+        this.add(mainPanel);
+
+        funniestButton.addActionListener(
+                evt -> {
+                    if (evt.getSource().equals(funniestButton)) {
+                        funniestController.execute();
+                    }
+                }
+        );
+
+        cancelButton.addActionListener(this);
+
+        searchButton.addActionListener(
+                evt -> {
+                    if (evt.getSource().equals(searchButton)) {
+
+                    }
+                }
 //    /**
 //     * React to a button click that results in evt.
 //     * @param evt the ActionEvent to react to
@@ -91,5 +101,19 @@ public class FavouriteView extends JPanel {
 //    public String getViewName() {
 //        return viewName;
 //    }
+    }
+
+    public void setFavouriteController(FavouriteController controller) {
+        this.favouriteController = controller;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }
