@@ -1,7 +1,14 @@
 package view.joke_view;
 
 import data_access.ExplanationDataAccessObject;
+import data_access.FileDataAccessObject;
 import data_access.MockExplanationDataAccessObject;
+import use_case.add_to_fav.AddToFavDataAccessInterface;
+import use_case.add_to_fav.AddToFavInputBoundary;
+import use_case.add_to_fav.AddToFavInteractor;
+import use_case.add_to_fav.AddToFavOutputBoundary;
+import use_case.add_to_fav.adapter.AddToFavController;
+import use_case.add_to_fav.adapter.AddToFavPresenter;
 import use_case.explanation.*;
 import use_case.explanation.adapter.ExplanationController;
 import use_case.explanation.adapter.ExplanationPresenter;
@@ -20,6 +27,7 @@ public class JokeFrameBuilder {
 
     //TODO change mock
     private final ExplanationDataAccessInterface explanationDataAccessObject = new MockExplanationDataAccessObject();
+    private AddToFavDataAccessInterface addToFavDataAccessObject;
 
     public JokeFrameBuilder() {
     }
@@ -46,15 +54,19 @@ public class JokeFrameBuilder {
         return this;
     }
 
-    //TODO do this
-    public JokeFrameBuilder addAddToFavUseCase() {
+    public JokeFrameBuilder addAddToFavUseCase(AddToFavDataAccessInterface addToFavDataAccessObject) {
+        final AddToFavOutputBoundary addToFavOutputBoundary = new AddToFavPresenter(jokeViewModel);
+        final AddToFavInputBoundary addToFavInteractor = new AddToFavInteractor(
+                addToFavDataAccessObject, addToFavOutputBoundary);
+
+        final AddToFavController addToFavController = new AddToFavController(addToFavInteractor);
+        jokeView.setAddController(addToFavController);
         return this;
     }
 
     public JFrame build() {
         final JFrame frame = new JFrame("Joke");
 
-        //TODO may need to change
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         frame.add(jokeView);
