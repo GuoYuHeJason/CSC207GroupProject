@@ -2,7 +2,6 @@ package app;
 
 import data_access.FileDataAccessObject;
 import data_access.JokeDataAccessObject;
-import data_access.SearchDataAccessObject;
 import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.login.LoginController;
@@ -30,7 +29,6 @@ import use_case.logout.LogoutInteractor;
 import use_case.logout.LogoutOutputBoundary;
 import use_case.logout.adapter.LogoutController;
 import use_case.logout.adapter.LogoutPresenter;
-import use_case.search.SearchDataAccessInterface;
 import use_case.search.SearchInputBoundary;
 import use_case.search.SearchInteractor;
 import use_case.search.SearchOutputBoundary;
