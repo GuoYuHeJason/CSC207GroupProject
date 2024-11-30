@@ -1,8 +1,9 @@
 package use_case.search_favourites;
 
-/**
- * Input boundary for the Search Favourites use case.
- */
 public interface SearchFavouritesInputBoundary {
-    void searchFavourites(String query);
+    /**
+     * Search for jokes in the user's favourites.
+     * @param keyword the keyword to search for.
+     */
+    void executeSearch(String keyword);
 }

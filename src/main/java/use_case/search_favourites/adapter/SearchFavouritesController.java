@@ -1,4 +1,4 @@
-package interface_adapter.search_favourites;
+package use_case.search_favourites.adapter;
 
 import use_case.search_favourites.SearchFavouritesInputBoundary;
 
@@ -11,6 +11,6 @@ public class SearchFavouritesController {
     }
 
     public void executeSearch(String keyword) {
-        interactor.searchFavourites(keyword);
+        interactor.executeSearch(keyword);
     }
 }
