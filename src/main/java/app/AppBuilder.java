@@ -183,7 +183,7 @@ public class AppBuilder {
      */
     public AppBuilder addSearchUseCase() {
         final SearchOutputBoundary searchOutputBoundary =
-                new SearchPresenter(jokeFrameBuilder);
+                new SearchPresenter(userDataAccessObject, jokeFrameBuilder);
 
         final SearchInputBoundary searchInteractor =
                 new SearchInteractor(jokeDataAccessObject, searchOutputBoundary);

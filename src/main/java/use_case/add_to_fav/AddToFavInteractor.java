@@ -42,7 +42,7 @@ public class AddToFavInteractor implements AddToFavInputBoundary {
             Joke joke = jokeFactory.create(inputData.getJokeContent(), (int) (Math.random()*100));
             joke.setExplanation(inputData.getExplanation());
             user.getFavorites().add(joke);
-            dataAccess.saveUser(user);
+            dataAccess.save(user);
             outputBoundary.prepareSuccessView("Added");
         }
     }

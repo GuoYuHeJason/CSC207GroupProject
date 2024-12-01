@@ -24,5 +24,5 @@ public interface AddToFavDataAccessInterface {
      * @param user the User object to save
      */
 
-    void saveUser(User user);
+    void save(User user);
 }
