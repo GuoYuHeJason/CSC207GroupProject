@@ -16,4 +16,8 @@ public class FavouriteController {
         final FavouriteInputData input = new FavouriteInputData(user);
         favouriteInputBoundary.execute(input);
     }
+
+    public void switchToFavouriteView() {
+            favouriteInputBoundary.switchToFavouriteView();
+    }
 }
