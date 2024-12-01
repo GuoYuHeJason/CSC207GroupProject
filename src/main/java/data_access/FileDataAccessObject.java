@@ -14,6 +14,9 @@ import entity.JokeFactory;
 import entity.User;
 import entity.UserFactory;
 import use_case.add_to_fav.AddToFavDataAccessInterface;
+import use_case.fav_search.FavSearchDataAccessInterface;
+import use_case.favourite.FavouriteUserDataAccessInterface;
+import use_case.login.LoginUserDataAccessInterface;
 import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 
@@ -22,7 +25,10 @@ import use_case.signup.SignupUserDataAccessInterface;
  */
 public class FileDataAccessObject implements SignupUserDataAccessInterface,
         LogoutUserDataAccessInterface,
-        AddToFavDataAccessInterface {
+        AddToFavDataAccessInterface,
+        LoginUserDataAccessInterface,
+        FavouriteUserDataAccessInterface,
+        FavSearchDataAccessInterface {
 
     private File jsonFile;
     private List<User> users = new ArrayList<>();
@@ -126,5 +132,10 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
     @Override
     public void setCurrentUsername(String username) {
         this.currentUserName = username;
+    }
+
+    @Override
+    public List<Joke> getFavourites() {
+        return (get(getCurrentUsername()).getFavorites());
     }
 }

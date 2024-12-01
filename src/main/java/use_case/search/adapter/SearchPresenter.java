@@ -1,7 +1,7 @@
 package use_case.search.adapter;
 
 import data_access.FileDataAccessObject;
-import interface_adapter.ViewManagerModel;
+import view.ViewManagerModel;
 import use_case.search.SearchOutputBoundary;
 import use_case.search.SearchOutputData;
 import view.joke_view.JokeFrameBuilder;

@@ -1,5 +1,6 @@
 package use_case.fav_search.adapter;
 
+import data_access.FileDataAccessObject;
 import use_case.fav_search.FavSearchOutputBoundary;
 import use_case.fav_search.FavSearchOutputData;
 import view.favourite_view.FavouriteView;
@@ -22,11 +23,12 @@ public class FavSearchPresenter implements FavSearchOutputBoundary {
 
     @Override
     public void prepareSuccessView(FavSearchOutputData searchFavouritesOutputData) {
+        final FileDataAccessObject fileDataAccessObject = new FileDataAccessObject("src/main/resources/Users.json");
         final JFrame frame = jokeFrameBuilder
                 .addJokeView()
                 .setJokeContent(searchFavouritesOutputData.getJokeContent())
                 .addExplanationUseCase()
-                .addAddToFavUseCase()
+                .addAddToFavUseCase(fileDataAccessObject)
                 .build();
 
         frame.pack();

@@ -36,6 +36,7 @@ public class JokeState {
         this.addToFav = added;
     }
 
-    public String getAddToFav(){
+    public String getAddToFav() {
         return this.addToFav;
     }
+}

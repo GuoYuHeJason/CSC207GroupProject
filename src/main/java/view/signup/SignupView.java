@@ -75,7 +75,13 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 }
         );
 
-        cancel.addActionListener(this);
+        cancel.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        System.out.println(SignupViewModel.CANCEL_BUTTON_INFO);
+                    }
+                }
+        );
 
         addUsernameListener();
         addPasswordListener();

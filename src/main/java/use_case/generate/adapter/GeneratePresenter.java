@@ -4,7 +4,6 @@ import data_access.FileDataAccessObject;
 import use_case.generate.GenerateOuputBoundary;
 import use_case.generate.GenerateOutputData;
 import view.joke_view.JokeFrameBuilder;
-import visitor.GenerateVisitor;
 import visitor.JokeVisitor;
 import visitor.Visitor;
 

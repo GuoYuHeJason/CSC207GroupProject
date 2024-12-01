@@ -53,11 +53,13 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
 
         final JPanel jokeListPanel = new JPanel();
         final List<Joke> fav = favouriteViewModel.getState().getFavourites();
+        boolean b = !(fav == null);
+        if (b) {
         for (Joke joke : fav) {
             final String content = joke.getContent();
             jokeListPanel.add(new JLabel(content));
         }
-
+}
         final JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
         mainPanel.setLeftComponent(buttons);
@@ -105,5 +107,9 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
+    }
+
+    public String getViewName() {
+        return viewName;
     }
 }

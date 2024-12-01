@@ -61,7 +61,7 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
         searchJokeButton.addActionListener(event -> {
             final String query = JOptionPane.showInputDialog(this, SEARCH_BUTTON_LABEL + ":");
             if (query != null && !query.trim().isEmpty()) {
-                searchController.switchToSearchView();
+                searchController.switchtoSearchView();
             }
         });
 

@@ -3,6 +3,8 @@ package app;
 import data_access.FileDataAccessObject;
 import data_access.JokeDataAccessObject;
 import entity.UserFactory;
+import use_case.funniest.adapter.FunniestController;
+import use_case.funniest.adapter.FunniestPresenter;
 import view.ViewManagerModel;
 import use_case.login.adapter.LoginController;
 import use_case.login.adapter.LoginPresenter;
@@ -76,7 +78,7 @@ public class AppBuilder {
     private final ViewManager viewManager = new ViewManager(cardPanel, cardLayout, viewManagerModel);
 
     // thought question: is the hard dependency below a problem?
-    private final FileDataAccessObject userDataAccessObject = new FileDataAccessObject("src/main/resources/Users.json");
+    private final FileDataAccessObject userDataAccessObject = new FileDataAccessObject("Users.json");
     private final JokeDataAccessObject jokeDataAccessObject = new JokeDataAccessObject();
     private final JokeFrameBuilder jokeFrameBuilder = new JokeFrameBuilder();
 
@@ -153,7 +155,7 @@ public class AppBuilder {
      */
     public AppBuilder addSignupUseCase() {
         final SignupOutputBoundary signupOutputBoundary = new SignupPresenter(viewManagerModel,
-                signupViewModel, loginViewModel, searchViewModel);
+                signupViewModel, loginViewModel);
         final SignupInputBoundary userSignupInteractor = new SignupInteractor(
                 userDataAccessObject, signupOutputBoundary, userFactory);
 
@@ -184,7 +186,7 @@ public class AppBuilder {
      */
     public AppBuilder addSearchUseCase() {
         final SearchOutputBoundary searchOutputBoundary =
-                new SearchPresenter(userDataAccessObject, jokeFrameBuilder);
+                new SearchPresenter(searchViewModel, viewManagerModel, userDataAccessObject, jokeFrameBuilder);
 
         final SearchInputBoundary searchInteractor =
                 new SearchInteractor(jokeDataAccessObject, searchOutputBoundary);
@@ -236,7 +238,7 @@ public class AppBuilder {
      */
     public AppBuilder addFunniestUseCase() {
         final FunniestOutputBoundary funniestOutputBoundary =
-                new FunniestPresenter(favouriteViewModel);
+                new FunniestPresenter(jokeFrameBuilder, userDataAccessObject);
 
         final FunniestInputBoundary funniestInputBoundary =
                 new FunniestInteractor(funniestOutputBoundary);
@@ -253,7 +255,7 @@ public class AppBuilder {
      */
     public AppBuilder addGenerateUseCase() {
         final GenerateOuputBoundary generateOuputBoundary =
-                new GeneratePresenter(jokeFrameBuilder);
+                new GeneratePresenter(userDataAccessObject);
 
         final GenerateInputBoundary generateInputBoundary =
                 new GenerateInteractor(jokeDataAccessObject, generateOuputBoundary);
