@@ -16,7 +16,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import use_case.login.adapter.LoginController;
-import view.helper_functions.LabelTextPanel;
+import view.LabelTextPanel;
 
 /**
  * The View for when the user is logging into the program.

@@ -13,4 +13,8 @@ public class SearchController {
     public void execute(String keywords) {
         searchInputBoundary.executeSearch(keywords);
     }
+
+    public void switchtoSearchView() {
+        searchInputBoundary.switchToSearchView();
+    }
 }
