@@ -9,7 +9,7 @@ public class FavSearchInteractor implements FavSearchInputBoundary {
     private final FavSearchDataAccessInterface dataAccess;
     private final FavSearchOutputBoundary presenter;
 
-    public FavSearchInteractor(FavSearchOutputBoundary presenter) {
+    public FavSearchInteractor(FavSearchOutputBoundary presenter, FavSearchDataAccessInterface dataAccess) {
         this.dataAccess = dataAccess;
         this.presenter = presenter;
     }

@@ -14,11 +14,9 @@ import javax.swing.*;
 
 public class FavSearchPresenter implements FavSearchOutputBoundary {
 
-    private final FavouriteView favouriteView;
     private final JokeFrameBuilder jokeFrameBuilder;
 
-    public FavSearchPresenter(FavouriteViewModel favouriteView, JokeFrameBuilder jokeFrameBuilder) {
-        this.favouriteView = favouriteView;
+    public FavSearchPresenter(JokeFrameBuilder jokeFrameBuilder) {
         this.jokeFrameBuilder = jokeFrameBuilder;
     }
 
