@@ -25,4 +25,8 @@ public class FavouriteInteractor implements FavouriteInputBoundary {
 
         favouriteOutputBoundary.prepareSuccessView(favouriteOutputData);
     }
+    @Override
+    public void switchToFavouriteView() {
+        favouriteOutputBoundary.switchToFavouriteView();
+    }
 }

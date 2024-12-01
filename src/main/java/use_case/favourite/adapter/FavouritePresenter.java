@@ -2,15 +2,18 @@ package use_case.favourite.adapter;
 
 import use_case.favourite.FavouriteOutputBoundary;
 import use_case.favourite.FavouriteOutputData;
+import view.ViewManagerModel;
 import view.favourite_view.FavouriteState;
 import view.favourite_view.FavouriteViewModel;
 
 public class FavouritePresenter implements FavouriteOutputBoundary {
 
     private final FavouriteViewModel favouriteViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public FavouritePresenter(FavouriteViewModel favouriteViewModel) {
+    public FavouritePresenter(FavouriteViewModel favouriteViewModel, ViewManagerModel viewManagerModel) {
         this.favouriteViewModel = favouriteViewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
     @Override
@@ -24,5 +27,11 @@ public class FavouritePresenter implements FavouriteOutputBoundary {
     @Override
     public void prepareFailView(String errorMessage) {
 
+    }
+
+    @Override
+    public void switchToFavouriteView() {
+        viewManagerModel.setState(favouriteViewModel.getViewName());
+        viewManagerModel.firePropertyChanged();
     }
 }

@@ -7,4 +7,6 @@ public interface FavouriteInputBoundary {
      * @param favouriteInputData the input data
      */
     void execute(FavouriteInputData favouriteInputData);
+
+    void switchToFavouriteView();
 }
