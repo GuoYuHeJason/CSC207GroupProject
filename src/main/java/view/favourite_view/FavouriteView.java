@@ -1,6 +1,6 @@
 package view.favourite_view;
 
-import view.helper_functions.LabelTextPanel;
+import view.LabelTextPanel;
 
 import java.awt.*;
 

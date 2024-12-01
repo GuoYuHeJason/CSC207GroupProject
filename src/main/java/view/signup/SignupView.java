@@ -1,7 +1,7 @@
 package view.signup;
 
 import use_case.signup.adapter.SignupController;
-import view.helper_functions.LabelTextPanel;
+import view.LabelTextPanel;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

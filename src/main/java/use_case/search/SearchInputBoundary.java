@@ -6,4 +6,6 @@ public interface SearchInputBoundary {
      * @param keyword the keyword that wants to be searched.
      */
     void executeSearch(String keyword);
+
+    void switchToSearchView();
 }

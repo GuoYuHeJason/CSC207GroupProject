@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import use_case.search.adapter.SearchController;
-import view.helper_functions.LabelTextPanel;
 import use_case.search.adapter.SearchViewModel;
 
 public class SearchView extends JPanel implements ActionListener, PropertyChangeListener {
