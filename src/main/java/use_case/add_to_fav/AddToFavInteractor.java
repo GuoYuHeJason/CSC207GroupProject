@@ -1,7 +1,8 @@
 package use_case.add_to_fav;
 
-import entity.User;
 import entity.Joke;
+import entity.JokeFactory;
+import entity.User;
 
 /**
  * The AddToFavInteractor class implements the business logic for adding jokes
@@ -29,35 +30,20 @@ public class AddToFavInteractor implements AddToFavInputBoundary {
      * Handles the business logic for adding a joke to a user's favorites list.
      *
      * @param inputData the input data containing the username and joke ID
-     * @return a response model indicating the result of the operation
      */
     @Override
-    public AddToFavOutputData addToFavorites(AddToFavInputData inputData) {
-        // Retrieve the user by username
-        final User user = dataAccess.getUser(inputData.getUsername());
+    public void executeAddToFav(AddToFavInputData inputData) {
+        final User user = dataAccess.get(dataAccess.getCurrentUsername());
         if (user == null) {
-            return outputBoundary.prepareFailResponse("User not found.");
-        }
-
-        // Retrieve the joke by joke ID
-        final Joke joke = dataAccess.getJoke(inputData.getJokeId());
-        if (joke == null) {
-            return outputBoundary.prepareFailResponse("Joke not found.");
-        }
-
-        // Attempt to add the joke to the user's favorites
-        if (user.addToFavorites()) {
-            // Save the updated user in the data store
-            dataAccess.saveUser(user);
-
-            // Prepare a success response
-            return outputBoundary.prepareSuccessResponse(
-                    new AddToFavOutputData("Joke added to favorites successfully!")
-            );
+            outputBoundary.prepareFailView("User not found.");
         }
         else {
-            // Joke was already in the favorites list
-            return outputBoundary.prepareFailResponse("Joke is already in the favorites list.");
+            JokeFactory jokeFactory = new JokeFactory();
+            Joke joke = jokeFactory.create(inputData.getJokeContent(), (int) (Math.random()*100));
+            joke.setExplanation(inputData.getExplanation());
+            user.getFavorites().add(joke);
+            dataAccess.saveUser(user);
+            outputBoundary.prepareSuccessView("Added");
         }
     }
 }

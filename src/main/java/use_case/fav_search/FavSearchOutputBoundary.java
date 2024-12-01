@@ -1,12 +1,12 @@
-package use_case.search_favourites;
+package use_case.fav_search;
 
-public interface SearchFavouritesOutputBoundary {
+public interface FavSearchOutputBoundary {
 
     /**
      * Prepares the view for successful search results.
      * @param searchFavouritesOutputData the output data containing the joke content.
      */
-    void prepareSuccessView(SearchFavouritesOutputData searchFavouritesOutputData);
+    void prepareSuccessView(FavSearchOutputData searchFavouritesOutputData);
 
     /**
      * Presents an error message if the search fails.

@@ -75,5 +75,9 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
     public void setSearchController(SearchController searchController) {
         this.searchController = searchController;
     }
+
+    public String getViewName() {
+        return viewName;
+    }
 }
 

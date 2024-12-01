@@ -39,4 +39,3 @@ public class JokeState {
     public String getAddToFav(){
         return this.addToFav;
     }
-}

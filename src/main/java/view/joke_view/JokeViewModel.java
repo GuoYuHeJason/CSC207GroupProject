@@ -15,4 +15,3 @@ public class JokeViewModel extends ViewModel<JokeState> {
         setState(new JokeState());
     }
     // a wrapper for all the info you need to build a view
-}

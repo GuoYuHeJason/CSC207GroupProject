@@ -93,6 +93,10 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
 
     @Override
     public void save(User user) {
+        if (this.existsByName(user.getName())) {
+            final User currentUser = this.get(user.getName());
+            users.remove(currentUser);
+        }
         users.add(user);
         this.save();
     }
@@ -109,7 +113,7 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
 
     @Override
     public boolean existsByName(String username) {
-        return false;
+        return this.get(username) != null;
     }
 
     @Override
