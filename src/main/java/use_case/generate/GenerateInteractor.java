@@ -1,9 +1,5 @@
 package use_case.generate;
 
-import use_case.note.DataAccessException;
-import use_case.note.NoteDataAccessInterface;
-import use_case.note.NoteOutputBoundary;
-
 /**
  * The "Use Case Interactor" for generating joke
  */

@@ -28,7 +28,8 @@ public class FavSearchInteractor implements FavSearchInputBoundary {
             else {
                 final Joke selectedJoke = matchingJokes.get(0);
                 final FavSearchOutputData outputData = new FavSearchOutputData(
-                        selectedJoke.getContent()
+                        selectedJoke.getContent(),
+                        selectedJoke.getExplanation()
                 );
                 presenter.prepareSuccessView(outputData);
             }

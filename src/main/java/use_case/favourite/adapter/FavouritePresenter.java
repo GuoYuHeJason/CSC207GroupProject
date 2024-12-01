@@ -25,9 +25,4 @@ public class FavouritePresenter implements FavouriteOutputBoundary {
     public void prepareFailView(String errorMessage) {
 
     }
-
-    @Override
-    public void prepareFailureView(String errormessage) {
-
-    }
 }

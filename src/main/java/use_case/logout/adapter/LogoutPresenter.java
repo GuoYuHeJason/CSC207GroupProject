@@ -1,10 +1,10 @@
 package use_case.logout.adapter;
 
-import interface_adapter.ViewManagerModel;
-import interface_adapter.change_password.LoggedInState;
-import interface_adapter.change_password.LoggedInViewModel;
-import interface_adapter.login.LoginState;
-import interface_adapter.login.LoginViewModel;
+import view.ViewManagerModel;
+import view.main.MainState;
+import view.main.MainViewModel;
+import view.login.LoginViewModel;
+import view.login.LoginState;
 import use_case.logout.LogoutOutputBoundary;
 import use_case.logout.LogoutOutputData;
 
@@ -13,30 +13,30 @@ import use_case.logout.LogoutOutputData;
  */
 public class LogoutPresenter implements LogoutOutputBoundary {
 
-    private final LoggedInViewModel loggedInViewModel;
+    private final MainViewModel mainViewModel;
     private final ViewManagerModel viewManagerModel;
     private final LoginViewModel loginViewModel;
 
     public LogoutPresenter(ViewManagerModel viewManagerModel,
-                          LoggedInViewModel loggedInViewModel,
+                          MainViewModel mainViewModel,
                            LoginViewModel loginViewModel) {
-        this.loggedInViewModel = loggedInViewModel;
+        this.mainViewModel = mainViewModel;
         this.viewManagerModel = viewManagerModel;
         this.loginViewModel = loginViewModel;
     }
 
     @Override
     public void prepareSuccessView(LogoutOutputData response) {
-        final LoggedInState loggedInState = loggedInViewModel.getState();
-        loggedInState.setUsername("");
-        loggedInViewModel.setState(loggedInState);
-        loggedInViewModel.firePropertyChanged();
+        final MainState mainState = mainViewModel.getState();
+        mainState.setUsername(response.getUsername());
+        mainViewModel.setState(mainState);
+        mainViewModel.firePropertyChanged();
         final LoginState loginState = loginViewModel.getState();
         loginState.setUsername("");
         loginState.setPassword("");
         loginViewModel.setState(loginState);
         loginViewModel.firePropertyChanged();
-        this.viewManagerModel.setState(loggedInViewModel.getViewName());
+        this.viewManagerModel.setState(mainViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
         this.viewManagerModel.setState(loginViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
