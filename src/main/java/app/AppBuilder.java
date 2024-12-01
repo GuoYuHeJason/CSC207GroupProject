@@ -3,11 +3,13 @@ package app;
 import data_access.FileDataAccessObject;
 import data_access.JokeDataAccessObject;
 import entity.UserFactory;
-import interface_adapter.ViewManagerModel;
-import interface_adapter.login.LoginController;
-import interface_adapter.login.LoginPresenter;
-import interface_adapter.login.LoginViewModel;
+import view.ViewManagerModel;
+import use_case.login.adapter.LoginController;
+import use_case.login.adapter.LoginPresenter;
+import view.login.LoginViewModel;
 import use_case.fav_search.*;
+import use_case.fav_search.adapter.FavSearchController;
+import use_case.fav_search.adapter.FavSearchPresenter;
 import use_case.favourite.FavouriteInputBoundary;
 import use_case.favourite.FavouriteInteractor;
 import use_case.favourite.FavouriteOutputBoundary;
@@ -40,11 +42,10 @@ import use_case.signup.SignupInteractor;
 import use_case.signup.SignupOutputBoundary;
 import use_case.signup.adapter.SignupController;
 import use_case.signup.adapter.SignupPresenter;
-import use_case.signup.adapter.SignupViewModel;
-import view.LoggedInView;
-import view.LoginView;
+import view.signup.SignupViewModel;
+import view.login.LoginView;
 import view.SearchView;
-import view.SignupView;
+import view.signup.SignupView;
 import view.ViewManager;
 import view.favourite_view.FavouriteView;
 import view.favourite_view.FavouriteViewModel;
@@ -218,10 +219,10 @@ public class AppBuilder {
      */
     public AppBuilder addFavSearchUseCase() {
         final FavSearchOutputBoundary favSearchOutputBoundary =
-                new FavSearchPresenter(favouriteViewModel, jokeFrameBuilder);
+                new FavSearchPresenter(jokeFrameBuilder);
 
         final FavSearchInputBoundary favSearchInteractor =
-                new FavSearchInteractor(favSearchOutputBoundary);
+                new FavSearchInteractor(favSearchOutputBoundary, userDataAccessObject);
 
         final FavSearchController favSearchController =
                 new FavSearchController(favSearchInteractor);

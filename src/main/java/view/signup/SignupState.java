@@ -1,4 +1,4 @@
-package use_case.signup.adapter;
+package view.signup;
 
 /**
  * The state for the Signup View Model.

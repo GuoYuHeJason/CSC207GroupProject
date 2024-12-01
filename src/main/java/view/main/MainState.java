@@ -1,31 +1,21 @@
 package view.main;
 
 public class MainState {
-    // info that can change
-    private String jokeContent = "";
-    private String explanation = "";
 
-    @Override
+    private String username = "";
+
     public String toString() {
-        return "JokeState{"
-                + "jokeContent='" + getJokeContent() + '\''
-                + ", explanation='" + getExplanation() + '\''
+        return "MainState{"
+                + "username: "
+                + getUsername() + '\''
                 + '}';
     }
 
-    public String getExplanation() {
-        return explanation;
+    public String getUsername() {
+        return username;
     }
 
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
-    }
-
-    public String getJokeContent() {
-        return jokeContent;
-    }
-
-    public void setJokeContent(String jokeContent) {
-        this.jokeContent = jokeContent;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

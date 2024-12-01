@@ -11,10 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import interface_adapter.joke.JokeController;
-import interface_adapter.joke.MainViewModel;
 import use_case.favourite.adapter.FavouriteController;
 import use_case.generate.adapter.GenerateController;
+import use_case.logout.adapter.LogoutController;
 import use_case.search.adapter.SearchController;
 
 import static view.main.MainViewModel.*;
@@ -33,7 +32,7 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
     private final JButton favouritePageButton = new JButton(FAVOURITE_BUTTON_LABEL);
     private final JButton logoutButton = new JButton(LOGOUT_BUTTON_LABEL);
 
-    private JokeController jokeController;
+    private LogoutController logoutController;
     private GenerateController generateController;
     private FavouriteController favouriteController;
     private SearchController searchController;
@@ -57,12 +56,12 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
      * Configures the actions for each button.
      */
     private void setupButtons() {
-        generateJokeButton.addActionListener(event -> jokeController.execute("Generate", ""));
+        generateJokeButton.addActionListener(event -> generateController.execute());
 
         searchJokeButton.addActionListener(event -> {
             final String query = JOptionPane.showInputDialog(this, SEARCH_BUTTON_LABEL + ":");
             if (query != null && !query.trim().isEmpty()) {
-                jokeController.execute("search", query);
+                searchController.switchToSearchView();
             }
         });
 
@@ -109,5 +108,9 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
 
     public void setSearchController(SearchController searchController) {
         this.searchController = searchController;
+    }
+
+    public void setLogoutController(LogoutController logoutController) {
+        this.logoutController = logoutController;
     }
 }
