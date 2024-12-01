@@ -22,7 +22,7 @@ public class Visitor implements JokeVisitor{
 
         final JFrame frame = frameBuilder
                 .addJokeView()
-                .setJokeContent( generateOutputData.getJokeContent())
+                .setJokeContent(generateOutputData.getJokeContent())
                 .addExplanationUseCase()
                 .addAddToFavUseCase(fileDataAccessObject)
                 .build();
@@ -37,7 +37,7 @@ public class Visitor implements JokeVisitor{
 
         final JFrame frame = frameBuilder
                 .addJokeView()
-                .setJokeContent( searchOutputData.getJokeContent())
+                .setJokeContent(searchOutputData.getJokeContent())
                 .addExplanationUseCase()
                 .addAddToFavUseCase(fileDataAccessObject)
                 .build();
