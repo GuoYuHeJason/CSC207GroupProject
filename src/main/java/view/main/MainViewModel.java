@@ -12,7 +12,7 @@ public class MainViewModel extends ViewModel<MainState> {
     public static final String ERROR_DIALOG_TITLE = "Error";
 
     public MainViewModel() {
-        super("Joke");
+        super("Main");
         setState(new MainState());
     }
 }

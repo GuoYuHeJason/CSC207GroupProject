@@ -2,38 +2,30 @@ package use_case.login;
 
 import entity.User;
 
-/**
- * The Login Interactor.
- */
 public class LoginInteractor implements LoginInputBoundary {
-    private final LoginUserDataAccessInterface userDataAccessObject;
-    private final LoginOutputBoundary loginPresenter;
+    private final LoginUserDataAccessInterface userDataAccess;
+    private final LoginOutputBoundary presenter;
 
-    public LoginInteractor(LoginUserDataAccessInterface userDataAccessInterface,
-                           LoginOutputBoundary loginOutputBoundary) {
-        this.userDataAccessObject = userDataAccessInterface;
-        this.loginPresenter = loginOutputBoundary;
+    public LoginInteractor(LoginUserDataAccessInterface userDataAccess, LoginOutputBoundary presenter) {
+        this.userDataAccess = userDataAccess;
+        this.presenter = presenter;
     }
 
     @Override
-    public void execute(LoginInputData loginInputData) {
-        final String username = loginInputData.getUsername();
-        final String password = loginInputData.getPassword();
-        if (!userDataAccessObject.existsByName(username)) {
-            loginPresenter.prepareFailView(username + ": Account does not exist.");
+    public void execute(LoginInputData inputData) {
+        final String username = inputData.getUsername();
+        final String password = inputData.getPassword();
+
+        if (!userDataAccess.existsByName(username)) {
+            presenter.prepareFailView("User does not exist.");
         }
         else {
-            final String pwd = userDataAccessObject.get(username).getPassword();
-            if (!password.equals(pwd)) {
-                loginPresenter.prepareFailView("Incorrect password for \"" + username + "\".");
+            final User user = userDataAccess.get(username);
+            if (!user.getPassword().equals(password)) {
+                presenter.prepareFailView("Incorrect password.");
             }
             else {
-
-                final User user = userDataAccessObject.get(loginInputData.getUsername());
-
-                userDataAccessObject.setCurrentUsername(user.getName());
-                final LoginOutputData loginOutputData = new LoginOutputData(user.getName(), false);
-                loginPresenter.prepareSuccessView(loginOutputData);
+                presenter.prepareSuccessView(new LoginOutputData(username));
             }
         }
     }

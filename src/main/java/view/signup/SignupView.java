@@ -1,8 +1,6 @@
-package view;
+package view.signup;
 
 import use_case.signup.adapter.SignupController;
-import use_case.signup.adapter.SignupState;
-import use_case.signup.adapter.SignupViewModel;
 import view.helper_functions.LabelTextPanel;
 
 import javax.swing.*;
