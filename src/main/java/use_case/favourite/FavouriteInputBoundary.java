@@ -7,11 +7,4 @@ public interface FavouriteInputBoundary {
      * @param favouriteInputData the input data
      */
     void execute(FavouriteInputData favouriteInputData);
-
-    /**
-     * Executes the switch to login view use case.
-     */
-    void switchToFavouriteView();
-
-    void executeFunniest();
 }

@@ -10,11 +10,6 @@ public class FavouriteState {
     private User user;
     private List<Joke> favourites;
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public List<Joke> getFavourites() {
         return favourites;
     }

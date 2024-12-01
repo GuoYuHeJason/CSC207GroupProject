@@ -9,7 +9,11 @@ public class FunniestOutputData {
         this.joke = joke;
     }
 
-    Joke getJoke() {
+    public Joke getJoke() {
         return joke;
+    }
+
+    public String getJokeContent() {
+        return joke.getContent();
     }
 }

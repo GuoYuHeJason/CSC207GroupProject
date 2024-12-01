@@ -1,9 +1,9 @@
 package use_case.favourite;
 
-import java.util.List;
-
-import entity.Joke;
+import entity.User;
 
 public interface FavouriteUserDataAccessInterface {
-    List<Joke> getFavourite();
+    String getCurrentUsername();
+
+    User get(String username);
 }

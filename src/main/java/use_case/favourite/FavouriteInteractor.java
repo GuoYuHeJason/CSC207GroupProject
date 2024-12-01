@@ -17,16 +17,12 @@ public class FavouriteInteractor implements FavouriteInputBoundary {
         this.favouriteOutputBoundary = favouriteOutputBoundary;
     }
 
-    public void executeFavourite() {
-        try {
-            final List<Joke> jokeList = favouriteUserDataAccessInterface.getFavourite();
-            // interactor gets input data and outputs output data
-            final FavouriteOutputData favouriteOutputData = new FavouriteOutputData(jokeList);
+    @Override
+    public void execute(FavouriteInputData favouriteInputData) {
+        final List<Joke> jokeList = favouriteUserDataAccessInterface.get(favouriteUserDataAccessInterface.getCurrentUsername()).getFavorites();
+        // interactor gets input data and outputs output data
+        final FavouriteOutputData favouriteOutputData = new FavouriteOutputData(jokeList);
 
-            favouriteOutputBoundary.prepareSuccessView(favouriteOutputData);
-        }
-        catch (RuntimeException ex) {
-            favouriteOutputBoundary.prepareFailView(ex.getMessage());
-        }
+        favouriteOutputBoundary.prepareSuccessView(favouriteOutputData);
     }
 }

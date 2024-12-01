@@ -1,20 +1,29 @@
 package use_case.funniest;
 
-import use_case.favourite.FavouriteInputBoundary;
-import use_case.favourite.FavouriteOutputBoundary;
+import entity.Joke;
 
-public class FunniestInteractor implements FavouriteInputBoundary {
+import java.util.List;
 
-    private final FavouriteOutputBoundary favouriteOutputBoundary;
+public class FunniestInteractor implements FunniestInputBoundary {
 
-    public FunniestInteractor(FavouriteOutputBoundary outputBoundary) {
-        this.favouriteOutputBoundary = outputBoundary;
+    private final FunniestOutputBoundary funniestOutputBoundary;
+
+    public FunniestInteractor(FunniestOutputBoundary funniestoutputBoundary) {
+        this.funniestOutputBoundary = funniestoutputBoundary;
     }
 
     @Override
-    public void executeFunniest() {
-        try {
-
+    public void execute(FunniestInputData funniestInputData) {
+        final List<Joke> jokeList = funniestInputData.getFavouriteJokeList();
+        Joke funniestJoke = jokeList.get(0);
+        for (Joke joke : jokeList) {
+            if (joke.getScore() > funniestJoke.getScore()) {
+                funniestJoke = joke;
+            }
         }
+        // interactor gets input data and outputs output data
+        final FunniestOutputData funniestOutputData = new FunniestOutputData(funniestJoke);
+
+        funniestOutputBoundary.prepareSuccessView(funniestOutputData);
     }
 }
