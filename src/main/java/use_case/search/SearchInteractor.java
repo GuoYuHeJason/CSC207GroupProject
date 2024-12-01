@@ -22,4 +22,8 @@ public class SearchInteractor implements SearchInputBoundary {
             searchPresenter.prepareSuccessView(searchOutputData);
         }
     }
+
+    public void switchToSearchView() {
+        searchPresenter.switchToSearchView();
+    }
 }
