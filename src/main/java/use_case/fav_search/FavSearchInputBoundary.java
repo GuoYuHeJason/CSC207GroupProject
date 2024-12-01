@@ -1,6 +1,6 @@
-package use_case.search_favourites;
+package use_case.fav_search;
 
-public interface SearchFavouritesInputBoundary {
+public interface FavSearchInputBoundary {
     /**
      * Search for jokes in the user's favourites.
      * @param keyword the keyword to search for.
