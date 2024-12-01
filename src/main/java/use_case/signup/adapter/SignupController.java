@@ -33,8 +33,4 @@ public class SignupController {
     public void switchToLoginView() {
         userSignupUseCaseInteractor.switchToLoginView();
     }
-
-    public void switchtoSearchView() {
-        userSignupUseCaseInteractor.switchToSearchView();
-    }
 }

@@ -1,4 +1,4 @@
-package use_case.signup.adapter;
+package view.signup;
 
 import view.ViewModel;
 

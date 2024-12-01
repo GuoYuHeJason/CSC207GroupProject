@@ -3,7 +3,7 @@ package view.favourite_view;
 import entity.Joke;
 import use_case.fav_search.adapter.FavSearchController;
 import use_case.funniest.adapter.FunniestController;
-import view.helper_functions.LabelTextPanel;
+import view.LabelTextPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

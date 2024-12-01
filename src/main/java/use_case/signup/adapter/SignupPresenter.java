@@ -1,11 +1,13 @@
 package use_case.signup.adapter;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.login.LoginState;
-import interface_adapter.login.LoginViewModel;
+import use_case.login.LoginState;
+import view.login.LoginViewModel;
 import use_case.search.adapter.SearchViewModel;
 import use_case.signup.SignupOutputBoundary;
 import use_case.signup.SignupOutputData;
+import view.signup.SignupState;
+import view.signup.SignupViewModel;
 
 /**
  * The Presenter for the Signup Use Case.
@@ -49,11 +51,6 @@ public class SignupPresenter implements SignupOutputBoundary {
     @Override
     public void switchToLoginView() {
         viewManagerModel.setState(loginViewModel.getViewName());
-        viewManagerModel.firePropertyChanged();
-    }
-
-    public void switchToSearchView() {
-        viewManagerModel.setState(searchViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
 }
