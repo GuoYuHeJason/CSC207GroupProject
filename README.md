@@ -1,22 +1,20 @@
 # Joke Machine
 
-### Project for Group #269
-#### Team Name: Joke Machine
 #### Domain: Joke Generation and Explanation
+##### By: Jason He, Xiaowu Wu, Xuesi Deng, Alexander Sun, Cheryl Lin
 
 
 
 ## Table of Contents
-
-* Software Specification
-* Features
-* Installation Instructions
-* Usage
-* License 
-* Feedback and Contributions
+1. [Software Specification](#Software-specification)
+2. [Features](#Features)
+4. [Setup and Intstallation](#Setup-and-installation)
+5. [Usage](#Usage)
+6. [License](#License) 
+7. [Feedback and Contributions](#Feedback-and-contributions)
 
 ## Software Specification
-Joke Machine is a joke generation and explanation platform that allows users to generate, search for, save, and understand jokes. Users can generate or search up jokes, ask for explanations, and sort their list of favorite jokes based on rating of the jokes. Joke Machine integrates with external APIs for joke generation and explanation to provide rich and diverse humor content.
+Joke Machine is a joke generation and explanation platform that allows users to generate, search for, save, and understand jokes. The purpose of the project is to provide a platform for those to engage in jokes and understand in a way that is efficient and useful. Users can generate or search up jokes, ask for explanations, and sort their list of favorite jokes based on rating of the jokes. Joke Machine integrates with external APIs for joke generation and explanation to provide rich and diverse humor content.
 
 ## Features
   Joke Generation: Generate new jokes with a variety of themes and styles.
@@ -30,31 +28,33 @@ Joke Machine is a joke generation and explanation platform that allows users to 
 ## Setup and Installation
 * Before setting up the project, make sure you have the correct software installed。
   1. Java Development Kit (JDK) version 11 or higher: 
-     2. https://www.oracle.com/java/technologies/javase-downloads.html 
-  2. IntelliJ IDEA Community or Ultimate Edition: 
-     3. https://www.jetbrains.com/idea/download/
+     https://www.oracle.com/java/technologies/javase-downloads.html 
+  2. IntelliJ IDEA Community or Ultimate Edition:
+     https://www.jetbrains.com/idea/download/
   
 
 * Once you have the software setup: 
-  1. Clone the repository: 
-     2. "https://github.com/GuoYuHeJason/CSC207GroupProject.git"
+  1. Clone the repository:
+    * "https://github.com/GuoYuHeJason/CSC207GroupProject.git"
      
-  2. Open the Project in IntelliJ:
-     3. Launch IntelliJ IDEA. 
-     4. Go to file and click New --> Project From Version Control.
-     5. Paste the clone and open project.  
+  3. Open the Project in IntelliJ:
+    * Launch IntelliJ IDEA. 
+    * Go to file and click New --> Project From Version Control.
+    * Paste the clone and open project.  
      
-  5. Install Dependencies:
-     6. Ensure that your project dependencies are configured in a build.gradle or pom.xml file.
-     7. If using Maven, IntelliJ will automatically import dependencies defined in pom.xml.
-     If using Gradle, open the build.gradle file, and IntelliJ will synchronize the dependencies.
+  4. Install Dependencies:
+    * Ensure that your project dependencies are configured in a build.gradle or pom.xml file.
+    * If using Maven, IntelliJ will automatically import dependencies defined in pom.xml.
+     If using Gradle, open the build.gradle file, and IntelliJ will synchronize the     dependencies.
      
-  6. Run the Application:
-     6. Locate the Main class (or equivalent entry point) in your project.
-     7. Right-click on the file and select Run 'Main'.
+  5. Run the Application:
+    * Locate the Main class (or equivalent entry point) in your project.
+    * Right-click on the file and select Run 'Main'.
 
 
 ## Usage
+### Login / Signup
+* Enter a username and password in the fields provided to login. 
 ### Generating Jokes
 * Select the "Generate" button to create a new joke or search up joke by title or keyword 
 ### Explaining Jokes
@@ -71,20 +71,26 @@ Joke Machine is a joke generation and explanation platform that allows users to 
 This project is released under the Creative Commons CC0 1.0 Universal (CC0) Public Domain Dedication. See LICENSE for details.
 
 ## Feedback and Contributions
+Providing Feedback:
+  * Please submit your feedback through the Google Forms link provided:
+  * https://docs.google.com/forms/d/e/1FAIpQLSeqU8_6mZD_O4UUip36SM_Mf-7HdN1i8Qhy5KolPGqcwP-WEw/viewform?usp=sf_link
+  * (When providing feedback, please provide specific comments or implementations or changes)
+
 Contributing to the Project:
 1. Fork the Repository:
    * Click the "Fork" button on the top right of the repository page to create a copy of the project under your GitHub account.
 2. Clone the Repository: 
    * "git clone https://github.com/your-username/joke-machine.git"
 3. Create a New Branch:
-   4. "git checkout -b feature/new-feature"
+   * "git checkout -b feature/new-feature"
 4. Make Your Changes:
-   5. Add or change features 
+   * Add or change features 
 5. Submit a Pull Request:
-   6. Commit and push your changes to your fork and open a pull request in the main repository.
-   7. Provide a description of your changes explaining why they are valuable. 
+   * Commit and push your changes to your fork and open a pull request in the main repository.
+   * Provide a description of your changes explaining why they are valuable in the merge request
+   * We will review the changes and get back to you!
 
-We appreciate you for engaging with our Joke Machine!
+### We appreciate you for engaging with our Joke Machine!
 
 
    
