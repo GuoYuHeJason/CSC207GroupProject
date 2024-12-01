@@ -1,10 +1,10 @@
-package use_case.search_favourites;
+package use_case.fav_search;
 
-public class SearchFavouritesOutputData {
+public class FavSearchOutputData {
 
     private final String jokeContent;
 
-    public SearchFavouritesOutputData(String jokeContent) {
+    public FavSearchOutputData(String jokeContent) {
 
         this.jokeContent = jokeContent;
     }
