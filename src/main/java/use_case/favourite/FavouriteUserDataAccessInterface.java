@@ -6,5 +6,4 @@ public interface FavouriteUserDataAccessInterface {
     String getCurrentUsername();
 
     User get(String username);
-
 }

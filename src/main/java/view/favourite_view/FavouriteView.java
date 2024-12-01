@@ -1,7 +1,8 @@
 package view.favourite_view;
 
 import entity.Joke;
-import use_case.favourite.FavouriteInteractor;
+import use_case.fav_search.adapter.FavSearchController;
+import use_case.funniest.adapter.FunniestController;
 import view.helper_functions.LabelTextPanel;
 
 import java.awt.*;
@@ -14,7 +15,6 @@ import java.util.List;
 import javax.swing.*;
 
 import use_case.favourite.adapter.FavouriteController;
-import visitor.Visitor;
 
 public class FavouriteView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -24,6 +24,8 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
     private FavouriteView favouriteView;
 
     private FavouriteController favouriteController;
+    private FunniestController funniestController;
+    private FavSearchController favSearchController;
 
     private final JTextField searchBox = new JTextField(15);
     private final JButton searchButton;
@@ -50,9 +52,9 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
         buttons.add(search);
 
         final JPanel jokeListPanel = new JPanel();
-        List<Joke> fav = favouriteViewModel.getState().getFavourites();
-        for (int i = 0; i < fav.size(); i++) {
-            String content = fav.get(i).getContent();
+        final List<Joke> fav = favouriteViewModel.getState().getFavourites();
+        for (Joke joke : fav) {
+            final String content = joke.getContent();
             jokeListPanel.add(new JLabel(content));
         }
 
@@ -67,7 +69,7 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
         funniestButton.addActionListener(
                 evt -> {
                     if (evt.getSource().equals(funniestButton)) {
-                        funniestController.execute();
+                        funniestController.execute(fav);
                     }
                 }
         );
@@ -77,34 +79,22 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
         searchButton.addActionListener(
                 evt -> {
                     if (evt.getSource().equals(searchButton)) {
-
+                        favSearchController.executeSearch(searchBox.getText());
                     }
                 }
-//    /**
-//     * React to a button click that results in evt.
-//     * @param evt the ActionEvent to react to
-//     */
-//    public void actionPerformed(ActionEvent evt) {
-//        System.out.println("Click " + evt.getActionCommand());
-//    }
-//
-//    public void propertyChange(PropertyChangeEvent evt) {
-//        final FavouriteState state = (FavouriteState) evt.getNewValue();
-//        setFields(state);
-//        usernameErrorField.setText(state.getFavouriteError());
-//    }
-//
-//    private void setFields(FavouriteState state) {
-//        usernameInputField.setText(state.getUsername());
-//    }
-//
-//    public String getViewName() {
-//        return viewName;
-//    }
+        );
     }
 
     public void setFavouriteController(FavouriteController controller) {
         this.favouriteController = controller;
+    }
+
+    public void setFunniestController(FunniestController controller) {
+        this.funniestController = controller;
+    }
+
+    public void setFavSearchController(FavSearchController controller) {
+        this.favSearchController = controller;
     }
 
     @Override

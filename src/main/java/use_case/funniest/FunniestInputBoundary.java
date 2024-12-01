@@ -1,7 +1,11 @@
 package use_case.funniest;
 
-public interface FunniestInputBoundary {
-    void execute(FunniestInputData funniestInputData);
+import entity.User;
 
-    void executeFunniest();
+public interface FunniestInputBoundary {
+    /**
+     * Search the funniest joke by keyword.
+     * @param funniestInputData the input data.
+     */
+    void execute(FunniestInputData funniestInputData);
 }

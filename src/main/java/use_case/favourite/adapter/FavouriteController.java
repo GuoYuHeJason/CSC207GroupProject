@@ -6,14 +6,14 @@ import use_case.favourite.FavouriteInputData;
 
 public class FavouriteController {
 
-    private final FavouriteInputBoundary userFavouriteUseCaseInteractor;
+    private final FavouriteInputBoundary favouriteInputBoundary;
 
-    public FavouriteController(FavouriteInputBoundary userFavouriteUseCaseInteractor) {
-        this.userFavouriteUseCaseInteractor = userFavouriteUseCaseInteractor;
+    public FavouriteController(FavouriteInputBoundary favouriteInputBoundary) {
+        this.favouriteInputBoundary = favouriteInputBoundary;
     }
 
     public void execute(User user) {
-        FavouriteInputData input = new FavouriteInputData(user);
-        userFavouriteUseCaseInteractor.execute(input);
-    };
+        final FavouriteInputData input = new FavouriteInputData(user);
+        favouriteInputBoundary.execute(input);
+    }
 }
