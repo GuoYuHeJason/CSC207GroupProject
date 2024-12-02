@@ -1,13 +1,17 @@
 package use_case.fav_search;
 
-import entity.Joke;
-
 import java.util.List;
 
+import entity.Joke;
+
+/**
+ * Interface for accessing favorite jokes data.
+ */
 public interface FavSearchDataAccessInterface {
     /**
-     * Get the user's favourites list.
-     * @return a list of jokes marked as favourites.
+     * Get the user's favorites list.
+     *
+     * @return a list of jokes marked as favorites.
      */
     List<Joke> getFavourites();
 }
