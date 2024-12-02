@@ -1,2 +1,1 @@
-[{"username": "123", "password":  "123",
-  "favorites":  [{"content": "123", "explanation":  "456", "score": 0}]}]
+[{"favorites":[{"score":0,"explanation":"456","content":"123"},{"score":8,"explanation":"","content":"Why are Americans shit at Dota?They can't protect their towers."},{"score":2,"explanation":"","content":"So what's a set of predefined steps the government might take to preserve the environment?An Al-Gore-ithm."}],"password":"123","username":"123"}]

@@ -71,6 +71,7 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
         });
 
         logoutButton.addActionListener(event -> {
+            logoutController.execute(fileDataAccessObject.getCurrentUsername());
             logoutController.switchtoLoginView();
             // Logout logic
         });

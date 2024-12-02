@@ -76,20 +76,20 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
         }
     }
 
-    private void save() {
+    public void save() {
         final JSONArray jsonArray = new JSONArray();
 
         // Convert each user into a JSONObject and add to the JSONArray
         for (User user : users) {
             final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Username", user.getName());
-            jsonObject.put("Password", user.getPassword());
+            jsonObject.put("username", user.getName());
+            jsonObject.put("password", user.getPassword());
             jsonObject.put("favorites", user.getFavorites());
             jsonArray.put(jsonObject);
         }
 
         // Write the JSON array to the file
-        try (FileWriter fileWriter = new FileWriter("Users.json")) {
+        try (FileWriter fileWriter = new FileWriter("src/main/resources/Users.json")) {
             fileWriter.write(jsonArray.toString());
             System.out.println("Users saved successfully to " + "Users.json");
         }
@@ -106,7 +106,6 @@ public class FileDataAccessObject implements SignupUserDataAccessInterface,
             users.remove(currentUser);
         }
         users.add(user);
-        this.save();
     }
 
     public User get(String username) {
