@@ -171,7 +171,7 @@ public class AppBuilder {
     public AppBuilder addLoginUseCase() {
         // viewModels Injected to Presenter here.
         final LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel,
-                mainViewModel, loginViewModel);
+                mainViewModel, loginViewModel, signupViewModel);
         final LoginInputBoundary loginInteractor = new LoginInteractor(
                 userDataAccessObject, loginOutputBoundary);
 

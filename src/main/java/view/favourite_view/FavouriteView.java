@@ -3,6 +3,7 @@ package view.favourite_view;
 import entity.Joke;
 import use_case.fav_search.adapter.FavSearchController;
 import use_case.funniest.adapter.FunniestController;
+import view.FavoritePanel;
 import view.LabelTextPanel;
 
 import java.awt.*;
@@ -28,7 +29,7 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
     private FunniestController funniestController;
     private FavSearchController favSearchController;
 
-    final JSplitPane jokeListPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true);
+    final FavoritePanel jokeListPanel;
 
     private final JTextField searchBox = new JTextField(15);
     private final JButton searchButton;
@@ -41,6 +42,8 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
 
         final JLabel title = new JLabel(FavouriteViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        this.jokeListPanel = new FavoritePanel();
 
         final LabelTextPanel search = new LabelTextPanel(new JLabel(FavouriteViewModel.KEYWORD_LABEL), searchBox);
 
@@ -100,16 +103,17 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
     }
 
     private void setFields(FavouriteState state) {
-        jokeListPanel.removeAll();
-        final List<Joke> fav = state.getFavourites();
-
-        boolean b = !(fav == null);
-        if (b) {
-            for (Joke joke : fav) {
-                final String content = joke.getContent();
-                jokeListPanel.add(new JLabel(content + "\n"));
-            }
-        }
+        jokeListPanel.updateJokeList(state.getFavourites());
+//        jokeListPanel.removeAll();
+//        final List<Joke> fav = state.getFavourites();
+//
+//        boolean b = !(fav == null);
+//        if (b) {
+//            for (Joke joke : fav) {
+//                final String content = joke.getContent();
+//                jokeListPanel.add(new JLabel(content + "\n"));
+//            }
+//        }
     }
 
 

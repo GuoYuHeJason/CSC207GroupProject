@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,8 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import entity.Joke;
 import use_case.login.adapter.LoginController;
 import view.LabelTextPanel;
+import view.favourite_view.FavouriteState;
 
 /**
  * The View for when the user is logging into the program.
@@ -128,7 +131,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     @Override
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource().equals(cancelButton)) {
-            System.out.println("Cancel button clicked");
+            loginController.switchToSignUpView();
         }
     }
 
