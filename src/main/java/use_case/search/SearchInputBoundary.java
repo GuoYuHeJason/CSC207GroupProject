@@ -8,4 +8,6 @@ public interface SearchInputBoundary {
     void executeSearch(String keyword);
 
     void switchToSearchView();
+
+    void switchToMainView();
 }

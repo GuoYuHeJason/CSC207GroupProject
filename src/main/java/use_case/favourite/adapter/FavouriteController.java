@@ -20,4 +20,8 @@ public class FavouriteController {
     public void switchToFavouriteView() {
             favouriteInputBoundary.switchToFavouriteView();
     }
+
+    public void switchToMainView() {
+        favouriteInputBoundary.switchToMainView();
+    }
 }

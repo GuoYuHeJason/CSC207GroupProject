@@ -23,7 +23,7 @@ public class FavSearchPresenter implements FavSearchOutputBoundary {
 
     @Override
     public void prepareSuccessView(FavSearchOutputData searchFavouritesOutputData) {
-        final FileDataAccessObject fileDataAccessObject = new FileDataAccessObject("src/main/resources/Users.json");
+        final FileDataAccessObject fileDataAccessObject = new FileDataAccessObject("Users.json");
         final JFrame frame = jokeFrameBuilder
                 .addJokeView()
                 .setJokeContent(searchFavouritesOutputData.getJokeContent())

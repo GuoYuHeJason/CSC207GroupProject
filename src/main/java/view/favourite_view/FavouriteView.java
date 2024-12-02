@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.*;
 
 import use_case.favourite.adapter.FavouriteController;
+import view.main.MainState;
 
 public class FavouriteView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -27,9 +28,10 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
     private FunniestController funniestController;
     private FavSearchController favSearchController;
 
+    final JSplitPane jokeListPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true);
+
     private final JTextField searchBox = new JTextField(15);
     private final JButton searchButton;
-    private final JButton funniestButton;
     private final JButton cancelButton;
 
     public FavouriteView(FavouriteViewModel favouriteViewModel) {
@@ -45,21 +47,10 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
         final JPanel buttons = new JPanel();
         searchButton = new JButton(FavouriteViewModel.SEARCH_BUTTOM_LABEL);
         buttons.add(searchButton);
-        funniestButton = new JButton(FavouriteViewModel.FUNNIEST_BUTTOM_LABEL);
-        buttons.add(funniestButton);
         cancelButton = new JButton(FavouriteViewModel.CANCEL_BUTTOM_LABEL);
         buttons.add(cancelButton);
         buttons.add(search);
 
-        final JPanel jokeListPanel = new JPanel();
-        final List<Joke> fav = favouriteViewModel.getState().getFavourites();
-        boolean b = !(fav == null);
-        if (b) {
-        for (Joke joke : fav) {
-            final String content = joke.getContent();
-            jokeListPanel.add(new JLabel(content));
-        }
-}
         final JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
         mainPanel.setLeftComponent(buttons);
@@ -68,15 +59,13 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
         this.add(title);
         this.add(mainPanel);
 
-        funniestButton.addActionListener(
+        cancelButton.addActionListener(
                 evt -> {
-                    if (evt.getSource().equals(funniestButton)) {
-                        funniestController.execute(fav);
+                    if (evt.getSource().equals(cancelButton)) {
+                        favouriteController.switchToMainView();
                     }
                 }
         );
-
-        cancelButton.addActionListener(this);
 
         searchButton.addActionListener(
                 evt -> {
@@ -106,8 +95,23 @@ public class FavouriteView extends JPanel implements ActionListener, PropertyCha
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        final FavouriteState state = (FavouriteState) evt.getNewValue();
+        setFields(state);
     }
+
+    private void setFields(FavouriteState state) {
+        jokeListPanel.removeAll();
+        final List<Joke> fav = state.getFavourites();
+
+        boolean b = !(fav == null);
+        if (b) {
+            for (Joke joke : fav) {
+                final String content = joke.getContent();
+                jokeListPanel.add(new JLabel(content + "\n"));
+            }
+        }
+    }
+
 
     public String getViewName() {
         return viewName;

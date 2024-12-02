@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import data_access.FileDataAccessObject;
 import use_case.favourite.adapter.FavouriteController;
 import use_case.generate.adapter.GenerateController;
 import use_case.logout.adapter.LogoutController;
@@ -36,9 +37,11 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
     private GenerateController generateController;
     private FavouriteController favouriteController;
     private SearchController searchController;
+    private FileDataAccessObject fileDataAccessObject;
 
-    public MainView(MainViewModel jokeViewModel) {
+    public MainView(MainViewModel jokeViewModel, FileDataAccessObject fileDataAccessObject) {
         this.jokeViewModel = jokeViewModel;
+        this.fileDataAccessObject = fileDataAccessObject;
 
         this.jokeViewModel.addPropertyChangeListener(this);
 
@@ -59,17 +62,16 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
         generateJokeButton.addActionListener(event -> generateController.execute());
 
         searchJokeButton.addActionListener(event -> {
-            final String query = JOptionPane.showInputDialog(this, SEARCH_BUTTON_LABEL + ":");
-            if (query != null && !query.trim().isEmpty()) {
-                searchController.switchtoSearchView();
-            }
+            searchController.switchtoSearchView();
         });
 
         favouritePageButton.addActionListener(event -> {
+            favouriteController.execute(fileDataAccessObject.get(jokeViewModel.getState().getUsername()));
             // Navigate to favourites
         });
 
         logoutButton.addActionListener(event -> {
+            logoutController.switchtoLoginView();
             // Logout logic
         });
     }
@@ -88,10 +90,17 @@ public class MainView extends JPanel implements ActionListener, PropertyChangeLi
      */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        final MainState state = (MainState) evt.getNewValue();
+        setFields(state);
+
         if ("error".equals(evt.getPropertyName())) {
             JOptionPane.showMessageDialog(this, evt.getNewValue().toString(), ERROR_DIALOG_TITLE,
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void setFields(MainState state) {
+        userIdLabel.setText("User ID:" + state.getUsername());
     }
 
     public String getViewName() {

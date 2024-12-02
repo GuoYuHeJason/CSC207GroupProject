@@ -24,4 +24,8 @@ public class LogoutController {
 
         logoutUseCaseInteractor.execute(logoutInputData);
     }
+
+    public void switchtoLoginView() {
+        logoutUseCaseInteractor.switchtoLoginView();
+    }
 }

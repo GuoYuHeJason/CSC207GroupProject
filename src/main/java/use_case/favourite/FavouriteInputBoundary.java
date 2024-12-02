@@ -9,4 +9,6 @@ public interface FavouriteInputBoundary {
     void execute(FavouriteInputData favouriteInputData);
 
     void switchToFavouriteView();
+
+    void switchToMainView();
 }

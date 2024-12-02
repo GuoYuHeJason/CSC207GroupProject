@@ -1,3 +1,2 @@
-[{"Username": "Mika", "Password":  "12345678",
-  "favorites":  [{"content": "123", "explanation":  "456", "score": 0},
-    {"content": "789", "explanation": "101112", "score": 1}]}]
+[{"username": "123", "password":  "123",
+  "favorites":  [{"content": "123", "explanation":  "456", "score": 0}]}]
