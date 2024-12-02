@@ -52,7 +52,13 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
                 }
         );
 
-        cancelButton.addActionListener(this);
+        cancelButton.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        searchController.switchToMainView();
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

@@ -19,7 +19,7 @@ public class FavouriteInteractor implements FavouriteInputBoundary {
 
     @Override
     public void execute(FavouriteInputData favouriteInputData) {
-        final List<Joke> jokeList = favouriteUserDataAccessInterface.get(favouriteUserDataAccessInterface.getCurrentUsername()).getFavorites();
+        final List<Joke> jokeList = favouriteInputData.getUser().getFavorites();
         // interactor gets input data and outputs output data
         final FavouriteOutputData favouriteOutputData = new FavouriteOutputData(jokeList);
 
@@ -28,5 +28,10 @@ public class FavouriteInteractor implements FavouriteInputBoundary {
     @Override
     public void switchToFavouriteView() {
         favouriteOutputBoundary.switchToFavouriteView();
+    }
+
+    @Override
+    public void switchToMainView() {
+        favouriteOutputBoundary.switchToMainView();
     }
 }

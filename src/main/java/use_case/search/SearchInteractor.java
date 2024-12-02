@@ -26,4 +26,9 @@ public class SearchInteractor implements SearchInputBoundary {
     public void switchToSearchView() {
         searchPresenter.switchToSearchView();
     }
+
+    @Override
+    public void switchToMainView() {
+        searchPresenter.switchToMainView();
+    }
 }

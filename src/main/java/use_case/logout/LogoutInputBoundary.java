@@ -10,4 +10,6 @@ public interface LogoutInputBoundary {
      * @param LogoutInputData the input data
      */
     void execute(LogoutInputData LogoutInputData);
+
+    void switchtoLoginView();
 }

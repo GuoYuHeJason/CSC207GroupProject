@@ -17,4 +17,8 @@ public class SearchController {
     public void switchtoSearchView() {
         searchInputBoundary.switchToSearchView();
     }
+
+    public void switchToMainView() {
+        searchInputBoundary.switchToMainView();
+    }
 }

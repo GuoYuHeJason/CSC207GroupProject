@@ -125,7 +125,7 @@ public class AppBuilder {
      */
     public AppBuilder addMainView() {
         mainViewModel = new MainViewModel();
-        mainView = new MainView(mainViewModel);
+        mainView = new MainView(mainViewModel, userDataAccessObject);
         cardPanel.add(mainView, mainView.getViewName());
         return this;
     }
@@ -186,7 +186,11 @@ public class AppBuilder {
      */
     public AppBuilder addSearchUseCase() {
         final SearchOutputBoundary searchOutputBoundary =
-                new SearchPresenter(searchViewModel, viewManagerModel, userDataAccessObject, jokeFrameBuilder);
+                new SearchPresenter(searchViewModel,
+                        mainViewModel,
+                        viewManagerModel,
+                        userDataAccessObject,
+                        jokeFrameBuilder);
 
         final SearchInputBoundary searchInteractor =
                 new SearchInteractor(jokeDataAccessObject, searchOutputBoundary);
@@ -204,13 +208,14 @@ public class AppBuilder {
      */
     public AppBuilder addFavouriteUseCase() {
         final FavouriteOutputBoundary favouriteOutputBoundary =
-                new FavouritePresenter(favouriteViewModel);
+                new FavouritePresenter(favouriteViewModel, mainViewModel, viewManagerModel);
 
         final FavouriteInputBoundary favouriteInputBoundary =
                 new FavouriteInteractor(userDataAccessObject, favouriteOutputBoundary);
 
         final FavouriteController favouriteController =
                 new FavouriteController(favouriteInputBoundary);
+        favouriteView.setFavouriteController(favouriteController);
         mainView.setFavouriteController(favouriteController);
         return this;
     }

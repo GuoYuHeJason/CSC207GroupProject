@@ -11,7 +11,7 @@ public class FavouriteViewModel extends ViewModel<FavouriteState> {
     public static final String CANCEL_BUTTOM_LABEL = "cancel";
 
     public FavouriteViewModel() {
-        super("Favourite");
+        super(TITLE_LABEL);
         setState(new FavouriteState());
     }
 

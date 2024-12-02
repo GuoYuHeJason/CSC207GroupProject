@@ -15,4 +15,6 @@ public interface SearchOutputBoundary {
     // How to determine what is failure or success, depends on the format of API return_value
 
     void switchToSearchView();
+
+    void switchToMainView();
 }

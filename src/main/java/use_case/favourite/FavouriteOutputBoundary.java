@@ -14,4 +14,6 @@ public interface FavouriteOutputBoundary {
     void prepareFailView(String errorMessage);
 
     void switchToFavouriteView();
+
+    void switchToMainView();
 }
