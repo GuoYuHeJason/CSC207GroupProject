@@ -38,8 +38,8 @@ public class AddToFavInteractor implements AddToFavInputBoundary {
             outputBoundary.prepareFailView("User not found.");
         }
         else {
-            JokeFactory jokeFactory = new JokeFactory();
-            Joke joke = jokeFactory.create(inputData.getJokeContent(), (int) (Math.random()*100));
+            final JokeFactory jokeFactory = new JokeFactory();
+            final Joke joke = jokeFactory.create(inputData.getJokeContent(), (int) (Math.random()*100));
             joke.setExplanation(inputData.getExplanation());
             user.getFavorites().add(joke);
             dataAccess.saveUser(user);
