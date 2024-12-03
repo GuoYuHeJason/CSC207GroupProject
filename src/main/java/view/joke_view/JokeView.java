@@ -1,6 +1,6 @@
 package view.joke_view;
 
-import use_case.add_to_fav.AddController;
+import use_case.add_to_fav.adapter.AddToFavController;
 import use_case.explanation.adapter.ExplanationController;
 
 import java.awt.*;
@@ -25,7 +25,7 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
     // each function of a controller is a button
     private final JButton explain;
     private final JButton addToFav;
-    private AddController addController;
+    private AddToFavController addController;
     private ExplanationController explanationController;
 
     public JokeView(JokeViewModel jokeViewModel) {
@@ -64,8 +64,7 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
                         //can change depending on how addController is implemented
                         addController.execute(
                                 currentState.getJokeContent(),
-                                currentState.getExplanation(),
-                                null);
+                                currentState.getExplanation());
                     }
                 }
         );
@@ -140,6 +139,7 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
     public void propertyChange(PropertyChangeEvent evt) {
         final JokeState state = (JokeState) evt.getNewValue();
         setFields(state);
+        changeAddToFavText(state);
     }
 
     private void setFields(JokeState state) {
@@ -155,7 +155,11 @@ public class JokeView extends JPanel implements PropertyChangeListener, ActionLi
         this.explanationController = explanationController;
     }
 
-    public void setAddController(AddController addController) {
+    public void setAddController(AddToFavController addController) {
         this.addController = addController;
+    }
+
+    public void changeAddToFavText(JokeState jokeState) {
+        addToFav.setText(jokeState.getAddToFav());
     }
 }
