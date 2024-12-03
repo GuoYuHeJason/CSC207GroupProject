@@ -5,7 +5,7 @@ import entity.JokeFactory;
 import entity.User;
 
 /**
- * The AddToFavInteractor class implements the business logic for adding jokes
+ * The AddToFav Interactor class implements the business logic for adding jokes
  * to a user's favorites list. It communicates with the data access layer to
  * retrieve and save data, and uses the output boundary (presenter) to format
  * the response.

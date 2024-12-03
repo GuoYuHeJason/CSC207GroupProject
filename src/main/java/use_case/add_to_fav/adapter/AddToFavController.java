@@ -3,7 +3,7 @@ package use_case.add_to_fav.adapter;
 import use_case.add_to_fav.*;
 
 /**
- * The AddToFavController class handles user requests for adding a joke to their favorites.
+ * The AddToFavController class handles user request for adding a joke to their favorites.
  * It delegates the request to the interactor via the input boundary and returns a response
  * to the user interface layer.
  */

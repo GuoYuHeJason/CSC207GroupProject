@@ -2,7 +2,7 @@ package use_case.add_to_fav;
 
 /**
  * The AddToFavInputData class represents the input data
- * for the Add to Favorites use case.
+ * for the AddtoFavorites use case.
  */
 public class AddToFavInputData {
     private final String jokeContent;

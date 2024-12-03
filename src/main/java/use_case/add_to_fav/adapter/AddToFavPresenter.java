@@ -5,7 +5,7 @@ import view.joke_view.JokeState;
 import view.joke_view.JokeViewModel;
 
 /**
- * The AddToFavPresenter class formats the output of the Add to Favorites use case
+ * The AddToFavPresenter class formats the output of the AddtoFavorites use case
  * for the view layer.
  */
 public class AddToFavPresenter implements AddToFavOutputBoundary {

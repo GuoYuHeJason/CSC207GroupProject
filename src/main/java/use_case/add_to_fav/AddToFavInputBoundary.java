@@ -9,7 +9,7 @@ public interface AddToFavInputBoundary {
      * Adds a joke to a user's favorites list.
      *
      * @param inputData the input data containing the username and joke ID
-     * @return a response model indicating the result of the operation
+     * @return a response model indicating the result of the operation.
      */
     void executeAddToFav(AddToFavInputData inputData);
 }

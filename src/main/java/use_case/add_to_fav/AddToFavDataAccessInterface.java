@@ -5,7 +5,7 @@ import entity.Joke;
 import entity.User;
 
 /**
- * The AddToFavDataAccessInterface defines methods for accessing
+ * The AddToFavDataAccess Interface defines methods for accessing
  * user and joke data in the data storage layer.
  */
 public interface AddToFavDataAccessInterface {
